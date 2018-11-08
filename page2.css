@@ -19,6 +19,14 @@ h1{
     padding-bottom: 5px;
 }
 
+h2{
+    padding-left: 10px;
+    font-size: 40px;
+}
+
+p{
+  font-size: 25px;
+}
 .active {
 	background-color: #4CAF50;
 }
