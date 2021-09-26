@@ -1,0 +1,25 @@
+:root {
+    --background-color: #708090;
+    --text-color: #2c2d2d;
+    --border-color: #36454f;
+    --accent-color: #6e7f80;
+}
+
+header {
+    text-align: center;
+}
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+a:link, a:visited {
+    color:aquamarine;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover{
+    color:rgb(86, 177, 147);
+}
