@@ -5,6 +5,11 @@
     --accent-color: #6e7f80;
 }
 
+.page {
+    display: flex;
+    flex-direction: column ;
+}
+
 header {
     text-align: center;
 }
@@ -13,13 +18,35 @@ body {
     font-family: 'IBM Plex Sans', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
+    margin: 0;
 }
 
-a:link, a:visited {
-    color:aquamarine;
-    background-color: transparent;
+nav {
+    background-color: var(--text-color);
+    display: flex;
+    flex-direction: row;
+}
+
+nav a:hover {
+    background-color: black;
+}
+
+nav a, nav a:visited {
+    color: lightgrey;
     text-decoration: none;
+    padding: 10px 40px;
 }
-a:hover{
-    color:rgb(86, 177, 147);
+
+.nav_currentpage {
+    background-color: var(--border-color);
 }
+
+.content {
+    display: flex;
+    flex-direction: column ;
+    margin-left: 10%;
+    padding-left: 20px;
+    max-width: 70%;
+
+}
+
