@@ -39,8 +39,45 @@ nav a, nav a:visited {
     padding: 10px 40px;
 }
 
+h2 a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-bottom: 0px;
+    padding: 0px; 
+}
+
+h2 a:hover {
+    color: black;
+}
+
 .nav_currentpage {
     background-color: var(--border-color);
+}
+
+.home_content {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    max-height: 50%;
+    margin-top: 40px;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 25px;
+    padding: 0px;
+}
+
+
+.intro_picture img{
+    min-height: 100%;
+    max-width: 100%;
+    border-radius: 25px;
+
+}
+
+.intro_text {
+    min-width: 50%;
+    text-align: center;
+    align-self: center;
 }
 
 .content {
@@ -85,6 +122,19 @@ hr {
     border-style: solid;
     margin: 1px 0px;
     padding: 0px;
+}
+
+button {  
+    margin: 25px;
+    width: 100px; 
+    color: var(--text-color);
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: darkgray;
 }
 
 footer hr {
