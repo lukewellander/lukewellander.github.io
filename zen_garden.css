@@ -15,36 +15,57 @@ body {
 	line-height: 1.88889;
 	margin: 0;
 	color: white; 
-	background: linear-gradient(223deg, #001eff, #000000, #ff0000);
-	background-size: 600% 600%;
+	background-image: url("imgs/frosted.jpeg");
+	background-size: cover;
+	background-attachment: fixed;
+	/*background: linear-gradient(223deg, #667eea , #764ba2);
+	background-size: 400% 400%;
 
-	animation: AnimationName 50s ease infinite;
+	animation: AnimationName 20s ease infinite;*/
 }
 
-header h1 {
+header h1{
 	position: fixed;
 	text-align: center;
 	color: transparent;
-	font-size: 100px;
-	-webkit-text-stroke-width: 1px;
+	font-size: 5.5vw;
+	-webkit-text-stroke-width: 2px;
 	-webkit-text-stroke-color: white;
-	border: 2px white solid;
-	border-radius: 70px;
-	margin: 20% auto;
+	border: 3px white solid;
+	border-radius: 65px;
+	margin: 13% auto;
 	left: 20%;
 	right: 20%;
 }
 
-.main::before {
-	background-color: rgba(255, 255, 255, 0.3);
-	backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+header h2 {
+	position: fixed;
+	text-align: center;
+	color: transparent;
+	font-size: 3vw;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: white;
+	border: 2px white solid;
+	border-radius: 35px;
+	margin: 25% auto;
+	left: 27%;
+	right: 27%;
+}
+
+.intro {
+	position: relative;
+}
+
+.explanation::before {
+	background-color: rgba(255, 255, 255, 0.213);
+	backdrop-filter: blur(5px) saturate(200%) contrast(60%) brightness(130%);
 	content: '';
 	height: 100%;
 	position: absolute;
 	width: 100%;
 }
 
-.main {
+.explanation {
 	margin: auto;
 	margin-top: 40%;
 	border-radius: 15px;
@@ -52,23 +73,143 @@ header h1 {
 	font-size: 20px;
 	height: 20%;
 	overflow: hidden;
+	top: 50px;
 	position: sticky;
 	width: 80%;
 }
 
-.explanation {
+.explanation > * {
 	color: #414750;
 	margin-left: 30px;
-	margin-top: 100px;
+	margin: 20px;
 	position: relative;
 	z-index: 2;
 }
 
-.page-wrapper {
-	
+.participation::before {
+	background-color: rgba(255, 255, 255, 0.213);
+	backdrop-filter: blur(5px) saturate(200%) contrast(60%) brightness(130%);	
+	content: '';
+	height: 100%;
+	position: absolute;
+	width: 100%;
 }
 
+.participation {
+	margin: auto;
+	margin-top: 20%;
+	border-radius: 15px;
+	box-shadow: 0px 0px 15px 5px black;
+	font-size: 20px;
+	height: 20%;
+	overflow: hidden;
+	top: 50px;
+	position: sticky;
+	width: 80%;
+}
 
+.participation > * {
+	color: #414750;
+	margin-left: 30px;
+	margin: 20px;
+	position: relative;
+	z-index: 2;
+}
+
+.benefits::before {
+	background-color: rgba(255, 255, 255, 0.213);
+	backdrop-filter: blur(5px) saturate(200%) contrast(60%) brightness(130%);
+	content: '';
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}
+
+.benefits {
+	margin: auto;
+	margin-top: 20%;
+	border-radius: 15px;
+	box-shadow: 0px 0px 15px 5px black;
+	font-size: 20px;
+	height: 20%;
+	overflow: hidden;
+	top: 50px;
+	position: sticky;
+	width: 80%;
+}
+
+.benefits > * {
+	color: #414750;
+	margin-left: 30px;
+	margin: 20px;
+	position: relative;
+	z-index: 2;
+}
+
+.requirements::before {
+	background-color: rgba(255, 255, 255, 0.213);
+	backdrop-filter: blur(5px) saturate(200%) contrast(60%) brightness(130%);
+	content: '';
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}
+
+.requirements {
+	margin: auto;
+	margin-top: 20%;
+	border-radius: 15px;
+	box-shadow: 0px 0px 15px 5px black;
+	font-size: 20px;
+	height: 20%;
+	overflow: hidden;
+	top: 50px;
+	position: sticky;
+	width: 80%;
+}
+
+.requirements > * {
+	color: #414750;
+	margin-left: 30px;
+	margin: 20px;
+	position: relative;
+	z-index: 2;
+}
+
+footer::before {
+	background-color: rgba(255, 255, 255, 0.213);
+	backdrop-filter: blur(5px) saturate(200%) contrast(60%) brightness(130%);
+	content: '';
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}
+
+footer {
+	margin: auto;
+	margin-top: 20%;
+	border-radius: 15px;
+	box-shadow: 0px 0px 15px 5px black;
+	font-size: 20px;
+	height: 20%;
+	overflow: hidden;
+	top: 50px;
+	position: sticky;
+	width: 80%;
+}
+
+footer > * {
+	color: #414750;
+	margin-left: 30px;
+	margin: 20px;
+	position: relative;
+	z-index: 2;
+	padding: 5%;
+}
+
+abbr {
+	text-decoration: none;
+}
 
 @-webkit-keyframes AnimationName {
 	0%{background-position:87% 0%}
