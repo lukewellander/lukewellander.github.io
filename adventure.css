@@ -1,0 +1,48 @@
+div {
+    
+}
+
+#heading h1{
+    text-align: center;
+    font-size: 7vh;
+    font-family: Adventure;
+}
+
+#pageArea {
+    display: flex;
+    flex-direction: column;
+}
+
+#flexArea {
+    display: flex;
+}
+
+#items {
+    width: 20vw;
+}
+
+#playArea {
+    width: 70vw;
+    height: 65vh;
+}
+
+#inputArea #prompt {
+    margin-left: 30vw;
+    width: 40vw;
+    height: 5vh;
+    font-size: 2.3vh;
+    font-family: input;
+    font-style: bold;
+    padding-left: 1vw;
+    border-radius: 5px;
+    border-style: solid;
+}
+
+@font-face {
+    font-family: "Adventure";
+    src: url("adventure.ttf") format("truetype");
+}
+@font-face {
+    font-family: "input";
+    src: url("OpenSans-SemiBold.ttf");
+}
