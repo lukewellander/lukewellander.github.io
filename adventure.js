@@ -32,7 +32,7 @@ var data = {
     }
 }
 var player = {
-
+    
 }
 
 start();
