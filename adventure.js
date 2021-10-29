@@ -1,12 +1,15 @@
 var data = {
     "locations":{
         "startCave": {
+            "visited" : false,
             "locations": {
                 "startCaveEntrance" : ["the light", "the faint light", "faint light", "light", "entrance", "the entrance", "the cave entrance"]
             },
-            "story": "You wake up in a dark cave, all that you can see is a faint light comming from the cave entrance. "
+            "story": "You wake up in a dark cave, all that you can see is a faint light coming from the cave entrance. \n\n(Try: \"go to the cave entrance\")",
+            "returnStory": "You're back in the cave that you woke up in, it's too dark to see much though."
         },
         "startCaveEntrance" : {
+            "visited" : false,
             "locations": {
                 "startCave" : ["the cave", "cave"],
                 "startTown" : ["the path", "path", "town", "small town", "the village", "the small village"]
@@ -16,16 +19,20 @@ var data = {
             },
             "inspectables" : {
                 "bush" : {
-                    "keywords": ["bush", "bushes"]
-                }
+                    "keywords": ["bush", "bushes", "the bush", "the bushes"],
+                    "findings": "You look closer at the bushes and find a rusty sword hidden in one.",
+                    "item": "rusty sword",
+                },
             },
-            "story": "The sun blinds you as you make your way out of the cave. Your eyes begin to adjust and you can make out a path leading down the mountain side to the east. It looks like it heads to a small village."
+            "story": "The sun is blinding as you make your way out of the cave. Your eyes begin to adjust and you can make out a path leading down the mountain side to the east. It heads to a small village. The sun is reflecting off something in the bushes. \n\n(Try: search the bushes)",
+            "returnStory": "The sun is blinding as you make your way out of the cave. Your eyes begin to adjust and you can make out a path leading down the mountain side to the east. It heads to a small village."
         },
         "startTown": {
+            "visited" : false,
             "locations": {
                 "startCaveEntrance" : ["the mountain", "the cave", "mountain", "cave"],
             },
-            "story": "As you aproach the town you notice it is very quite you dont hear anything except the wind blowing though the trees."
+            "story": "As you aproach the town you notice it is very quite and seems abandoned. You continue into the small town untill you stumble upon an oger complaining about his pet donkey. \n\n(Try: attack the oger)"
         }
     },
     "commands": {
@@ -35,10 +42,17 @@ var data = {
         "exit":"move",
         "walk to":"move",
         "move to" : "move",
+        "move" : "move",
+        "head" : "move",
+        "go" : "move",
+        "look at" : "inspect",
+        "inspect" : "inspect",
+        "search" : "inspect",
+        "check out" : "inspect",
     }
 }
 var player = {
-    
+    inventory: [],
 }
 
 start();
@@ -53,7 +67,14 @@ function moveTo(location) {
 }
 
 async function displayStory(location) {
-    var text = data.locations[location].story;
+    var text;
+    if (data.locations[location].visited == false) {
+        text = data.locations[location].story;
+        data.locations[location].visited = true;
+    }
+    else {
+        text = data.locations[location].returnStory;
+    }
     var display = document.getElementById("playArea");
     var para = document.createElement("p");
 
@@ -85,9 +106,25 @@ function clickEnter(e) {
                 var location = input.replace(command + " ", "");
                 console.log(location);
                 location = Object.keys(data.locations[player.location].locations).filter(loc => Object.values(data.locations[player.location].locations[loc]).some(x => x == location));
-                console.log("move to " + location);
-                moveTo(location);
-                
+                if (data.locations[location] != undefined) {
+                    console.log("move to " + location);
+                    moveTo(location);
+                }
+                else {
+                    console.log("Invalid location");
+                }
+            }
+            else if (data.commands[command] == "inspect" && data.locations[player.location].inspectables != undefined){
+                var toInspect = input.replace(command + " ", "");
+                console.log(toInspect);
+                toInspect = Object.keys(data.locations[player.location].inspectables).filter(inspect => Object.values(data.locations[player.location].inspectables[inspect].keywords).some(x => x == toInspect));
+                if (data.locations[player.location].inspectables[toInspect] != undefined) {
+                    console.log("inspect " + toInspect);
+                    //inspect 
+                }
+                else {
+                    console.log("Invalid inspectable");
+                }
             }
             else {
                 // turn border red or something
