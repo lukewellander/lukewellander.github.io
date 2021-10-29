@@ -64,11 +64,11 @@
     font-family: text-font;
     font-size: 3vh;
     color: black;
-    animation: fadeIn linear 7s;
-    -webkit-animation: fadeIn linear 7s;
-    -moz-animation: fadeIn linear 7s;
-    -o-animation: fadeIn linear 7s;
-    -ms-animation: fadeIn linear 7s;
+    animation: fadeIn linear 4s;
+    -webkit-animation: fadeIn linear 4s;
+    -moz-animation: fadeIn linear 4s;
+    -o-animation: fadeIn linear 4s;
+    -ms-animation: fadeIn linear 4s;
   }
 
   .fade-out-text {
@@ -76,11 +76,11 @@
     font-family: text-font;
     font-size: 3vh;
     color: black;
-    animation: fadeOut linear 1s;
-    -webkit-animation: fadeOut linear 1s;
-    -moz-animation: fadeOut linear 1s;
-    -o-animation: fadeOut linear 1s;
-    -ms-animation: fadeOut linear 1s;
+    animation: fadeOut linear 2s;
+    -webkit-animation: fadeOut linear 2s;
+    -moz-animation: fadeOut linear 2s;
+    -o-animation: fadeOut linear 2s;
+    -ms-animation: fadeOut linear 2s;
   }
   
   @keyframes fadeIn {
