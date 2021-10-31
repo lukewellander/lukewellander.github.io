@@ -1,7 +1,7 @@
 
 #heading h1{
     text-align: center;
-    font-size: 7vh;
+    font-size: 4.5vw;
     font-family: Adventure;
 }
 
@@ -21,6 +21,19 @@
 #playArea {
     max-width: 60vw;
     height: 65vh;
+}
+
+#items {
+  margin-left: 2vw;
+  font-family: text-font;
+  font-size: 1.3vw;
+  color: darkgray;
+}
+
+#items .equiped {
+  font-family: text-font;
+  font-size: 1.3vw;
+  color: black;
 }
 
 #inputArea #prompt {
@@ -62,25 +75,25 @@
 .fade-in-text {
     display: inline-block;
     font-family: text-font;
-    font-size: 3vh;
+    font-size: 1.5vw;
     color: black;
-    animation: fadeIn linear 4s;
-    -webkit-animation: fadeIn linear 4s;
-    -moz-animation: fadeIn linear 4s;
-    -o-animation: fadeIn linear 4s;
-    -ms-animation: fadeIn linear 4s;
+    animation: fadeIn linear 1s;
+    -webkit-animation: fadeIn linear 1s;
+    -moz-animation: fadeIn linear 1s;
+    -o-animation: fadeIn linear 1s;
+    -ms-animation: fadeIn linear 1s;
   }
 
   .fade-out-text {
     display: inline-block;
     font-family: text-font;
-    font-size: 3vh;
+    font-size: 1.5vw;
     color: black;
-    animation: fadeOut linear 2s;
-    -webkit-animation: fadeOut linear 2s;
-    -moz-animation: fadeOut linear 2s;
-    -o-animation: fadeOut linear 2s;
-    -ms-animation: fadeOut linear 2s;
+    animation: fadeOut linear 1s;
+    -webkit-animation: fadeOut linear 1s;
+    -moz-animation: fadeOut linear 1s;
+    -o-animation: fadeOut linear 1s;
+    -ms-animation: fadeOut linear 1s;
   }
   
   @keyframes fadeIn {
