@@ -77,11 +77,11 @@
     font-family: text-font;
     font-size: 1.5vw;
     color: black;
-    animation: fadeIn linear 1s;
     -webkit-animation: fadeIn linear 1s;
     -moz-animation: fadeIn linear 1s;
     -o-animation: fadeIn linear 1s;
     -ms-animation: fadeIn linear 1s;
+    animation: fadeIn linear 1s;
   }
 
   .fade-out-text {
@@ -89,11 +89,11 @@
     font-family: text-font;
     font-size: 1.5vw;
     color: black;
-    animation: fadeOut linear 1s;
     -webkit-animation: fadeOut linear 1s;
     -moz-animation: fadeOut linear 1s;
     -o-animation: fadeOut linear 1s;
     -ms-animation: fadeOut linear 1s;
+    animation: fadeOut linear 1s;
   }
   
   @keyframes fadeIn {

@@ -12,7 +12,7 @@ var data = {
             "visited" : false,
             "locations": {
                 "startCave" : ["the cave", "cave"],
-                "startTown" : ["the path", "path", "town", "small town", "the village", "the small village"]
+                "startTown" : ["the path", "path", "town", "the town", "small town", "the village", "the small village"]
             },
             "items": {
                 "rusty sword" : ["the rusty sword", "rusty sword"]
@@ -24,12 +24,21 @@ var data = {
                 },
             },
             "story": "The sun is blinding as you make your way out of the cave. Your eyes begin to adjust and you can make out a path leading down the mountain side to the east. It heads to a small village. The sun is reflecting off something in the bushes. \n\n(Try: search the bushes)",
-            "returnStory": "The sun is blinding as you make your way out of the cave. Your eyes begin to adjust and you can make out a path leading down the mountain side to the east. It heads to a small village."
+            "returnStory": "You're back at the entrance to the cave you can either enter the cave or go to the small village. There may also be something hidden in the bushes."
         },
         "startTown": {
             "visited" : false,
             "locations": {
                 "startCaveEntrance" : ["the mountain", "the cave", "mountain", "cave"],
+            },
+            "enemies" : {
+                "oger": {
+                    "health" : 1,
+                    "story" : {
+                        "success":"The oger falls to his knees defeated! ",
+                        "failure":"The oger is much more powerful than you expected. You decide the best course of action is to just run away!\n\n(Try: run)\n(You need more power go find and equip the rusty sword)"
+                    }
+                }
             },
             "story": "As you aproach the town you notice it is very quite and seems abandoned. You continue into the small town untill you stumble upon an oger complaining about his pet donkey. \n\n(Try: attack the oger)"
         }
@@ -53,6 +62,8 @@ var data = {
         "equip" : "equip",
         "wear" : "equip",
         "hold" : "equip",
+        "attack" : "attack",
+        "run" : "run"
     },
     "items": {
         "rusty sword":{
@@ -74,6 +85,8 @@ var data = {
     }
 }
 var player = {
+    location: "startCave",
+    previousLocation: "startCave",
     inventory: [],
     weapon: null,
     armor: null,
@@ -135,6 +148,16 @@ function equip(item) {
     refreshInventory();
 }
 
+async function attack(enemy) {
+    if (playerPower() >= data.locations[player.location].enemies[enemy].health) {
+        changeSubText(data.locations[player.location].enemies[enemy].story.success);
+    }
+    else {
+        changeSubText(data.locations[player.location].enemies[enemy].story.failure);
+        data.locations[player.location].visited = false;
+    }
+}
+
 function refreshInventory() {
     var text = "<div class='equiped'>power: " + playerPower() + "<br>";
     if (player.weapon != null) {
@@ -187,8 +210,15 @@ function inspect(inspectable) {
 }
 
 function moveTo(location) {
+    player.previousLocation = player.location;
     player.location = location;
     displayStory(location);
+}
+
+function run () {
+    if (player.location != null) {
+        moveTo(player.previousLocation);
+    }
 }
 
 async function displayStory(location) {
@@ -247,6 +277,7 @@ function clickEnter(e) {
 
             var command = Object.keys(data.commands).filter(command => input.startsWith(command));
             console.log(command);
+            console.log(input);
             if (data.commands[command] == "move") {
                 var location = input.replace(command + " ", "");
                 console.log(location);
@@ -287,6 +318,14 @@ function clickEnter(e) {
                 var toEquip = input.replace(command + " ", ""); 
                 console.log(toEquip);
                 equip(toEquip);
+            }
+            else if (data.commands[command] == "attack" && data.locations[player.location].enemies != undefined) {
+                var enemy = input.replace(command + " ", "").replace("the ", ""); 
+                console.log(enemy);
+                attack(enemy);
+            }
+            else if (data.commands[command] == "run" && player.previousLocation != null) {
+                run();
             }
             else {
                 // turn border red or something
