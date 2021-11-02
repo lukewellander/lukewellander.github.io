@@ -3,24 +3,22 @@ var data = {
         "startCave": {
             "visited" : false,
             "locations": {
-                "startCaveEntrance" : ["the light", "the faint light", "faint light", "light", "entrance", "the entrance", "the cave entrance"]
+                "startCaveEntrance" : ["light", "faint light", "entrance", "cave entrance"]
             },
-            "story": "You wake up in a dark cave, all that you can see is a faint light coming from the cave entrance. \n\n(Try: \"go to the cave entrance\")",
-            "returnStory": "You're back in the cave that you woke up in, it's too dark to see much though."
+            "story": "You wake up in a dark cave, all you can see is a faint light coming from the cave entrance. \n\n(Try: \"go to the cave entrance\")",
+            "returnStory": "You're back in the cave that you woke up in, it's too dark to see anything other than the cave entrance."
         },
         "startCaveEntrance" : {
             "visited" : false,
             "locations": {
-                "startCave" : ["the cave", "cave"],
-                "startTown" : ["the path", "path", "town", "the town", "small town", "the village", "the small village"]
+                "startCave" : ["cave"],
+                "startTown" : ["east", "path", "town", "small town", "village", "small village"]
             },
-            "items": {
-                "rusty sword" : ["the rusty sword", "rusty sword"]
-            },
+            "items": ["rusty sword",],
             "inspectables" : {
                 "bush" : {
-                    "keywords": ["bush", "bushes", "the bush", "the bushes"],
-                    "findings": "You look closer at the bushes and find a rusty sword hidden in one. \n\n (Try: pick up rusty sword)",
+                    "keywords": ["bush", "bushes",],
+                    "findings": "You look closer at the bushes and find a rusty sword hidden in one. \n\n (Try: pick up the rusty sword)",
                 },
             },
             "story": "The sun is blinding as you make your way out of the cave. Your eyes begin to adjust and you can make out a path leading down the mountain side to the east. It heads to a small village. The sun is reflecting off something in the bushes. \n\n(Try: search the bushes)",
@@ -29,41 +27,50 @@ var data = {
         "startTown": {
             "visited" : false,
             "locations": {
-                "startCaveEntrance" : ["the mountain", "the cave", "mountain", "cave"],
+                "startCaveEntrance" : ["cave", "west", "western path", "west facing path"],
+                "bridge" : ["river", "south", "downstream", "southern path", "south facing path", "bridge"],
+                "mountains" : ["mountains", "mountain", "north", "northern path", "north facing path", "deep into mountains", "deep in mountains",],
             },
             "enemies" : {
-                "oger": {
+                "ogre": {
                     "health" : 1,
                     "story" : {
-                        "success":"The oger falls to his knees defeated! ",
-                        "failure":"The oger is much more powerful than you expected. You decide the best course of action is to just run away!\n\n(Try: run)\n(You need more power go find and equip the rusty sword)"
-                    }
-                }
+                        "success":"The ogre falls to his knees defeated, his wooden sheild falls to the ground beside him. Three paths lead out of this town the west facing path leads to the cave where your journey began, the north facing path leads deep into the mountains, and the southern path follows the river downstream. ",
+                        "failure":"The ogre is much more powerful than you expected. You decide the best course of action is to just run away!\n\n(Try: run)\n(Try: equip the rusty sword)\n(You need more power go find and equip the rusty sword)"
+                    },
+                    "drops": "wooden shield",
+                },
             },
-            "story": "As you aproach the town you notice it is very quite and seems abandoned. You continue into the small town untill you stumble upon an oger complaining about his pet donkey. \n\n(Try: attack the oger)"
+            "story": "As you aproach the town you notice it is very quite and seems abandoned. You continue into the small town untill you stumble upon an ogre complaining about his pet donkey. \n\n(Try: attack the ogre)",
+            "returnStory": "As you enter the town you see the body of a once great ogre laying dead on the side of the road. Three paths lead out of this town the west facing path leads to the cave where your journey began, the north facing path leads deep into the mountains, and the southern path follows the river downstream."
+        },
+        "bridge":{
+            "visited" : false,
+            "locations": {
+                "startTown" : ["east", "path", "town", "small town", "village", "small village"],
+            },
+            "enemies" : {
+                "wolf": {
+                    "health" : 3,
+                    "story" : {
+                        "success":"The wolf lunges at you attempting to sink it's teeth into your leg. You blindly thrust you sword in the direction of the wolf piercing it's side. Letting out a final cry the wolf collapses to the ground.",
+                        "failure":"The wolf growls as you approach, it chases you back to the begining of the bridge. It looks like you will have to go a different direction until you're powerful enough to defeat the wolf."
+                    },
+                },
+            },
+            "story": "You follow the path along the river until you come across a stone bridge leading over the river. You start to cross the bridge but notice a wolf blocking the other side of the bridge.",
+            "returnStory" : "Now that the wold is gone you can cross over the bridge easily",
+        },
+        "mountains":{
+            "visited" : false,
+            "locations": {
+                "startTown" : ["east", "path", "town", "small town", "village", "small village", "hike back", "hike back down", "back"],
+                "mountains" : ["mountains", "mountain", "north", "northern path", "north facing path", "deeper into mountains", "right"],
+                "mineshaft" : ["into mineshaft", "mine", "into mine", "mineshaft", "left", "west",]
+            },
+            "story": "You head up the path that leads into the mountains, you reach a fork in the road, the left path leads to a mineshaft, the right path leads deeper into the mountains, and of course you can always hike back down to the town.",
+            "returnStory" : "The road splits here, one path leads to a mineshaft, another leads deep into the mountains, yet another leads to a small town.",
         }
-    },
-    "commands": {
-        "go to":"move",
-        "follow":"move",
-        "enter":"move",
-        "exit":"move",
-        "walk to":"move",
-        "move to" : "move",
-        "move" : "move",
-        "head" : "move",
-        "look at" : "inspect",
-        "inspect" : "inspect",
-        "search" : "inspect",
-        "check out" : "inspect",
-        "pick up" : "pick up",
-        "grab" : "pick up",
-        "get" : "pick up",
-        "equip" : "equip",
-        "wear" : "equip",
-        "hold" : "equip",
-        "attack" : "attack",
-        "run" : "run"
     },
     "items": {
         "rusty sword":{
@@ -82,7 +89,29 @@ var data = {
             "type": "shield",
             "description" : "a wooden sheild, it's better than nothing.",
         }
-    }
+    },
+    "commands": {
+        "go":"move",
+        "follow":"move",
+        "enter":"move",
+        "exit":"move",
+        "walk":"move",
+        "move" : "move",
+        "head" : "move",
+        "look at" : "inspect",
+        "inspect" : "inspect",
+        "search" : "inspect",
+        "check out" : "inspect",
+        "pick up" : "pick up",
+        "grab" : "pick up",
+        "get" : "pick up",
+        "equip" : "equip",
+        "wear" : "equip",
+        "hold" : "equip",
+        "attack" : "attack",
+        "run" : "run",
+        "back" : "run",
+    },
 }
 var player = {
     location: "startCave",
@@ -149,25 +178,44 @@ function equip(item) {
 }
 
 async function attack(enemy) {
-    if (playerPower() >= data.locations[player.location].enemies[enemy].health) {
-        changeSubText(data.locations[player.location].enemies[enemy].story.success);
-    }
-    else {
-        changeSubText(data.locations[player.location].enemies[enemy].story.failure);
-        data.locations[player.location].visited = false;
+    if (data.locations[player.location].enemies[enemy] != undefined) {
+        if (playerPower() >= data.locations[player.location].enemies[enemy].health) {
+            data.locations[player.location].story = data.locations[player.location].enemies[enemy].story.success;
+            data.locations[player.location].visited = false;
+            displayStory(player.location);
+            data.locations[player.location].visited = true;
+            if (data.locations[player.location].enemies[enemy].drops != undefined) {
+                if (data.locations[player.location].items == undefined) {
+                    data.locations[player.location].items = [];
+                }
+                data.locations[player.location].items.push(data.locations[player.location].enemies[enemy].drops);
+            }
+            // remove the enemy from this scene
+            delete data.locations[player.location].enemies[enemy];
+            // if there are no more enemies in this scene remove the category
+            if (data.locations[player.location].enemies.length = 0) {
+                delete data.locations[player.location].enemies;
+            }
+        }
+        // if the player fails to kill the enemy show the failure story and set this scene like 
+        // we never visited so that the story will show up again
+        else {
+            changeSubText(data.locations[player.location].enemies[enemy].story.failure);
+            data.locations[player.location].visited = false;
+        }
     }
 }
 
 function refreshInventory() {
     var text = "<div class='equiped'>power: " + playerPower() + "<br>";
     if (player.weapon != null) {
-        text += player.weapon;
+        text += player.weapon + "<br>";
     }
     if (player.armor != null) {
-        text += player.armor;
+        text += player.armor + "<br>";
     }
     if (player.shield != null) {
-        text += player.shield;
+        text += player.shield + "<br>";
     }
     text += "</div> <br>"
     for (var i = 0; i < player.inventory.length; i ++) {
@@ -193,15 +241,19 @@ async function changeSubText(text) {
 }
 
 function pickUp(item) {
-    player.inventory.unshift(item);
-    delete data.locations[player.location].items[item];
-    var text = "You found the " + item;
-    if (item == "rusty sword") {
-        text += "\n\n (Try: equip rusty sword)";
-    }
+    var index = data.locations[player.location].items.indexOf(item);
+    if (data.locations[player.location].items[index] != undefined)
+    {
+        player.inventory.unshift(item);
+        delete data.locations[player.location].items[index];
+        var text = "You found the " + item;
 
-    changeSubText(text);
-    refreshInventory();
+        changeSubText(text);
+        refreshInventory();
+    }
+    else {
+        console.log("Item not here");
+    }
 }
 
 function inspect(inspectable) {
@@ -210,9 +262,12 @@ function inspect(inspectable) {
 }
 
 function moveTo(location) {
-    player.previousLocation = player.location;
-    player.location = location;
-    displayStory(location);
+    // if there are no enemies the player can move otherwise "run" is the only option
+    if (data.locations[player.location].enemies == undefined) {
+        player.previousLocation = player.location;
+        player.location = location;
+        displayStory(location);
+    }
 }
 
 function run () {
@@ -268,7 +323,7 @@ async function displayStory(location) {
 function clickEnter(e) {
     if (e.keyCode == 13) {
         var inputArea = e.target;
-        var input = inputArea.value.toLowerCase();
+        var input = inputArea.value.toLowerCase().replace(" to ", " ").replace(" the ", " ");
 
         inputArea.value = "";
 
@@ -305,14 +360,7 @@ function clickEnter(e) {
             else if (data.commands[command] == "pick up" && data.locations[player.location].items != undefined) {
                 var toPickUp = input.replace(command + " ", "");
                 console.log(toPickUp);
-                toPickUp = Object.keys(data.locations[player.location].items).filter(item => Object.values(data.locations[player.location].items[item]).some(x => x == toPickUp));
-                if (data.locations[player.location].items[toPickUp] != undefined) {
-                    console.log("pick up " + toPickUp);
-                    pickUp(toPickUp);
-                }
-                else {
-                    console.log("Invalid item");
-                }
+                pickUp(toPickUp);
             }
             else if (data.commands[command] == "equip") {
                 var toEquip = input.replace(command + " ", ""); 
@@ -320,7 +368,7 @@ function clickEnter(e) {
                 equip(toEquip);
             }
             else if (data.commands[command] == "attack" && data.locations[player.location].enemies != undefined) {
-                var enemy = input.replace(command + " ", "").replace("the ", ""); 
+                var enemy = input.replace(command + " ", ""); 
                 console.log(enemy);
                 attack(enemy);
             }
