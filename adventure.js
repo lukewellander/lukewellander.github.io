@@ -29,7 +29,7 @@ var data = {
             "locations": {
                 "startCaveEntrance" : ["cave", "west", "western path", "west facing path"],
                 "bridge" : ["river", "south", "downstream", "southern path", "south facing path", "bridge"],
-                "mountains" : ["mountains", "mountain", "north", "northern path", "north facing path", "deep into mountains", "deep in mountains",],
+                "startOfMountains" : ["mountains", "mountain", "north", "northern path", "north facing path", "deep into mountains", "deep in mountains",],
             },
             "enemies" : {
                 "ogre": {
@@ -61,7 +61,7 @@ var data = {
             "story": "You follow the path along the river until you come across a stone bridge leading over the river. You start to cross the bridge but notice a wolf blocking the other side of the bridge.",
             "returnStory" : "Now that the wold is gone you can cross over the bridge easily",
         },
-        "mountains":{
+        "startOfMountains":{
             "visited" : false,
             "locations": {
                 "startTown" : ["east", "path", "town", "small town", "village", "small village", "hike back", "hike back down", "back"],
@@ -70,7 +70,26 @@ var data = {
             },
             "story": "You head up the path that leads into the mountains, you reach a fork in the road, the left path leads to a mineshaft, the right path leads deeper into the mountains, and of course you can always hike back down to the town.",
             "returnStory" : "The road splits here, one path leads to a mineshaft, another leads deep into the mountains, yet another leads to a small town.",
-        }
+        },
+        "mineshaft": {
+            "visited" : false,
+            "locations" : {
+                "startOfMountains" : ["mountains", "mountain", "mineshaft", "outside", "out", "path", "entrance", "mine entrance", "entrance mine", "back"],
+                "mineshaftLevelOneA" : ["down ladder", "ladder", "down", "further", "further into mine", "past skeleton", "down further into mine"],
+            },
+            "items": ["leather armor",],
+            "inspectables": {
+                "skeleton" : {
+                    "keywords":["skeleton", "dead guy", "dead skeleton", "armor", "leather armor",],
+                    "findings": "This guy was wearing leather armor when he died, it clearly didn't do much for him. Maybe you'll have better luck."
+                }
+            },
+            "story": "You decide to leave the path and enter the mineshaft. Once inside you are greeted by the skeleton of a dead man, wearing leather armor as if it was still his job to make sure no one could enter or exit the mine. Behind you the entrance of the mine leads outside into the mountains, and just past the skeleton is a ladder that leads down further into the mine.",
+            "returnStory": "The skeleton lays lifeless on the ground. The entrance of the mine leads outside into the mountains, and just past the skeleton is the ladder that leads down further into the mine.",
+        },
+        "mineshaftLevelOneA" : {
+
+        },
     },
     "items": {
         "rusty sword":{
@@ -98,6 +117,7 @@ var data = {
         "walk":"move",
         "move" : "move",
         "head" : "move",
+        "climb" : "move",
         "look at" : "inspect",
         "inspect" : "inspect",
         "search" : "inspect",
@@ -105,6 +125,7 @@ var data = {
         "pick up" : "pick up",
         "grab" : "pick up",
         "get" : "pick up",
+        "take" : "pick up",
         "equip" : "equip",
         "wear" : "equip",
         "hold" : "equip",
