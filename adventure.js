@@ -47,19 +47,31 @@ var data = {
         "bridge":{
             "visited" : false,
             "locations": {
-                "startTown" : ["east", "path", "town", "small town", "village", "small village"],
+                "startTown" : ["north", "path", "town", "small town", "village", "small village", "back", "other side", "other side of bridge", ],
+                "forestEntrance" : ["forest", "dark forest", "forest path"],
+                "castleGate" : ["castle", "west", "west path", "large castle"],
             },
             "enemies" : {
                 "wolf": {
                     "health" : 3,
                     "story" : {
-                        "success":"The wolf lunges at you attempting to sink it's teeth into your leg. You blindly thrust you sword in the direction of the wolf piercing it's side. Letting out a final cry the wolf collapses to the ground.",
+                        "success":"The wolf lunges at you attempting to sink it's teeth into your leg. You blindly thrust you sword in the direction of the wolf piercing it's side. Letting out a final cry the wolf collapses to the ground. Now that the wolf is dead you cross over the bridge easily. The path on the other side of the bridge leads to the town, the path on this side of the bridge goes, two directions, the east path leads to a dark forest and the west path leads to a large castle.",
                         "failure":"The wolf growls as you approach, it chases you back to the begining of the bridge. It looks like you will have to go a different direction until you're powerful enough to defeat the wolf."
                     },
                 },
             },
             "story": "You follow the path along the river until you come across a stone bridge leading over the river. You start to cross the bridge but notice a wolf blocking the other side of the bridge.",
-            "returnStory" : "Now that the wold is gone you can cross over the bridge easily",
+            "returnStory" : "Now that the wolf is dead you cross over the bridge easily. The path on the other side of the bridge leads to the town, the path on this side of the bridge goes, two directions, the east path leads to a dark forest and the west path leads to a large castle.",
+        },
+        "castleGate" : {
+            "visited" : false,
+            "locked" : true,
+            "locations" : {
+                "castle" : ["open gate", "through gate", "gate", "castle", "inside"],
+                "bridge" : [""]
+            },
+            "story" : "You follow the path that leads to the castle as you near the castle you see that the path leads to a large gate in the castle walls. The gate has two padlocks blue and red they prevent you from opening it.",
+            "returnStory" : "",
         },
         "startOfMountains":{
             "visited" : false,
@@ -75,7 +87,7 @@ var data = {
             "visited" : false,
             "locations" : {
                 "startOfMountains" : ["mountains", "mountain", "mineshaft", "outside", "out", "path", "entrance", "mine entrance", "entrance mine", "back"],
-                "mineshaftLevelOneA" : ["down ladder", "ladder", "down", "further", "further into mine", "past skeleton", "down further into mine"],
+                "mineshaftLevelOne" : ["down ladder", "ladder", "down", "further", "further into mine", "past skeleton", "down further into mine"],
             },
             "items": ["leather armor",],
             "inspectables": {
@@ -87,15 +99,96 @@ var data = {
             "story": "You decide to leave the path and enter the mineshaft. Once inside you are greeted by the skeleton of a dead man, wearing leather armor as if it was still his job to make sure no one could enter or exit the mine. Behind you the entrance of the mine leads outside into the mountains, and just past the skeleton is a ladder that leads down further into the mine.",
             "returnStory": "The skeleton lays lifeless on the ground. The entrance of the mine leads outside into the mountains, and just past the skeleton is the ladder that leads down further into the mine.",
         },
-        "mineshaftLevelOneA" : {
-
+        "mineshaftLevelOne" : {
+            "visited" : false,
+            "locations" : {
+                "mineshaft" : ["up", "up ladder", "back", "surface", "surface level"],
+                "mineshaftLevelTwo" : ["down ladder", "down", "further", "further into mine", "down further into mine", "next level", "down next level"],
+            },
+            "enemies" : {
+                "giant spider": {
+                    "health" : 3,
+                    "story" : {
+                        "success":"You quickly slice off the spiders legs before it could grab you with big fangs. With one final stab you finish off the spider as it lay dead in a pile of legs. Beyond the spiders body you see a ladder leading down into the mine and an iron sword, perhaps it was dropped by the last adventurer that made their way into the mine.",
+                        "failure":"You advance towards the spider, but the spider is too fast. It darts up the wall of the mineshaft before leaping directly down onto you. You manage to shove it off before it can get a bite out of you, you better run away before it attacks again."
+                    },
+                    "drops" : "iron sword",
+                },
+            },
+            "story" : "You make your way down the ladder to the next level of the mine, when you reach the bottom you see a giant spider creep out of the shadows.",
+            "returnStory" : "You are one level down in the mine. This is where you killed the spider, you can go up the ladder to the surface level or you can go down the ladder to the next level of the mine.",
+        },
+        "mineshaftLevelTwo" : {
+            "visited" : false,
+            "locations" : {
+                "mineshaftLevelOne" : ["up", "up ladder", "back", "one", "level one", "one i came from"],
+                "mineshaftLevelThree" : ["down ladder", "down", "further", "further into mine", "down further into mine", "next level", "down next level", "down next ladder"],
+            },
+            "enemies" : {
+                "goblin": {
+                    "health" : 4,
+                    "story" : {
+                        "success":"The goblin moves quick but you are able to over power it quite easily. You quickly finish off the goblin, and notice in the stash of the goblins treasure there is some iron armor that may be of use. You see that you can go down the next ladder or back up the one you came from.",
+                        "failure":"The goblin is jsut too quick, you can't seem to outmaneuver it. It might be best to just run."
+                    },
+                    "drops" : "iron armor",
+                },
+            },
+            "story" : "You head down the next ladder and are surprised to see another monster waiting for you this time it's a goblin.",
+            "returnStory" : "You're on the second level of the mine with all of the goblin treasure. You can go up the ladder or down the other ladder.",
+        },
+        "mineshaftLevelThree" : {
+            "visited" : false,
+            "locations" : {
+                "mineshaftLevelTwo" : ["up", "up ladder", "back", "two", "level two", "ladder that leads up"],
+                "mineshaftLevelFour" : ["down ladder", "down other ladder", "down", "further", "further into mine", "ladder that leads down", "down further into mine", "next level", "down next level"],
+            },
+            "enemies" : {
+                "orc": {
+                    "health" : 5,
+                    "story" : {
+                        "success":"The orc swings at you with its club, luckly the orc is very slow and you are able to dodge his attack, get behind him and slice him up from behind. The orc falls to his knees before colapsing all the way to the ground. The orc drops his iron shield as he falls. You can only see to ways to go on, the ladder that leads up, and a ladder that leads down.",
+                        "failure":"The orc hits you on the head knocking you out ... when you finaly come to the orc is accross the mineshaft paying no attention to you. Now would be a good time to run."
+                    },
+                    "drops" : "iron shield",
+                },
+            },
+            "story" : "You climb down to the next level wondering how much funrther this mineshaft goes. At the bottom of the ladder you turn around to find an orc living in this section of the mine.",
+            "returnStory" : "You are back at the third level of the mine where the orc had been living. You can go up the ladder or down the other ladder.",
+        },
+        "mineshaftLevelFour" : {
+            "visited" : false,
+            "locations" : {
+                "mineshaftLevelThree" : ["up", "up ladder", "back", "three", "level three"],
+                "mineshaftLevelFive" : ["continue down ladder", "down ladder", "down", "further", "further into mine", "down further into mine", "next level", "down next level", "fifth level"],
+            },
+            "enemies" : {
+                "rock golem": {
+                    "health" : 6,
+                    "story" : {
+                        "success":"You lure the rock golem into a dead end tunnel before rolling between its legs. You jump up off the ground and push over a wooden support, causing the ceiling of this tunnel to colapse on top of the rock golem. Next to the pile of rubble there is a set of knight armor. You can continue down another ladder, or go back up the ladder to the third level.",
+                        "failure":"The rock golem throws a huge boulder directly at you, knocking you back to the bottom of the ladder you better use this opportunity to run."
+                    },
+                    "drops" : "knight armor",
+                },
+            },
+            "story" : "You make your way down to the fourth level tired of fighting monsters, you are disappointed when you reach the bottom of the ladder and standing not far from you is a rock golem.",
+            "returnStory" : "This is the fourth level of the mine where you burried the rock golem, you can go down a ladder to the fifth level, or you can go up a ladder to the third level of the mineshaft.",
+        },
+        "mineshaftLevelFive" : {
+            "visited" : false,
+            "locations" : {
+                "mineshaftLevelFour" : ["up", "up ladder", "back", "back up ladder", "three", "level four"],
+                },
+            "items" : ["blue key",], 
+            "story" : "You head down yet another ladder relieved to see that there is no monster waiting here for you, instead there is a blue key sitting on top of a stone column. The only way out is back up the ladder.",
+            "returnStory" : "You're back at the lowest level of the mine, this is where you discovered the blue key. The only way out is back up the ladder.",
         },
     },
     "items": {
         "rusty sword":{
             "damage" : 1,
             "type" : "weapon",
-            "action" : "swing",
             "description" : "a rusty sword that you found in a bush.",
         },
         "leather armor" : {
@@ -107,7 +200,59 @@ var data = {
             "protection": 1,
             "type": "shield",
             "description" : "a wooden sheild, it's better than nothing.",
-        }
+        },
+        "iron sword" : {
+            "damage" : 2,
+            "type" : "weapon",
+            "description" : "a sturdy sword made out of iron",
+        },
+        "iron shield" : {
+            "protection" : 2,
+            "type" : "shield",
+            "description" : "a sturdy shield made out of iron",
+        },
+        "iron armor" : {
+            "protection" : 2,
+            "type" : "armor",
+            "description" : "a full suit of armor made from iron",
+        },
+        "great sword" : {
+            "damage" : 3,
+            "type" : "weapon",
+            "description" : "A huge sword made only for the bravest of wariors.",
+        },
+        "knight armor" : {
+            "protection" : 3,
+            "type" : "armor",
+            "description" : "The best armor made for the kings knights.",
+        },
+        "knight shield" : {
+            "protection" : 3,
+            "type" : "shield",
+            "description" : "The best shield made for the kings knights."
+        },
+        "fire sword" : {
+            "damage" : 4,
+            "type" : "weapon",
+            "description" : "A sword that harnesses the power of fire this would be very useful against an ice enemy.",
+        },
+        "ice sword" : {
+            "damage" : 4,
+            "type" : "weapon",
+            "description" : "A sword that harnesses the power of ice this would be very useful against a fire enemy.",
+        },
+        "red key" : {
+            "type" : "key",
+            "description" : "It's a red key, it probably unlocks something important.",
+        },
+        "blue key" : {
+            "type" : "key",
+            "description" : "It's a blue key, it probably unlocks something important.",
+        },
+        "yellow key" : {
+            "type" : "key",
+            "description" : "It's a yellow key, it probably unlocks something important.",
+        },
     },
     "commands": {
         "go":"move",
@@ -132,6 +277,9 @@ var data = {
         "attack" : "attack",
         "run" : "run",
         "back" : "run",
+        "info" : "info",
+        "about" : "about",
+        "use" : "use",
     },
 }
 var player = {
@@ -189,6 +337,7 @@ function equip(item) {
             player.inventory.pop(item);
         }
         else {
+            changeSubText("This item is not equipable");
             console.log("this is not equipable");
         }
     }
@@ -198,6 +347,25 @@ function equip(item) {
     refreshInventory();
 }
 
+function info(item) {
+    if (data.items[item] != undefined) {
+        text = "";
+        text += item + ":\n";
+        text += "---Type: " + data.items[item].type + "\n";
+        if (data.items[item].type == "weapon") {
+            text += "---Damage: " + data.items[item].damage + "\n";
+        }
+        else {
+            text += "---Protection: " + data.items[item].protection + "\n";
+        }
+        text += "---Description: " + data.items[item].description;
+        changeSubText(text);
+    }
+    else {
+        console.log("item does not exist");
+    }
+}
+
 async function attack(enemy) {
     if (data.locations[player.location].enemies[enemy] != undefined) {
         if (playerPower() >= data.locations[player.location].enemies[enemy].health) {
@@ -205,6 +373,7 @@ async function attack(enemy) {
             data.locations[player.location].visited = false;
             displayStory(player.location);
             data.locations[player.location].visited = true;
+            // if the enemy has something to drop
             if (data.locations[player.location].enemies[enemy].drops != undefined) {
                 if (data.locations[player.location].items == undefined) {
                     data.locations[player.location].items = [];
@@ -278,21 +447,41 @@ function pickUp(item) {
 }
 
 function inspect(inspectable) {
-    var text = data.locations[player.location].inspectables[inspectable].findings;
-    changeSubText(text);
+    console.log(inspectable);
+    if (Object.keys(data.locations[player.location].inspectables).some(inspect => Object.values(data.locations[player.location].inspectables[inspect].keywords).some(x => x == inspectable))) {
+        toInspect = Object.keys(data.locations[player.location].inspectables).filter(inspect => Object.values(data.locations[player.location].inspectables[inspect].keywords).some(x => x == inspectable));
+        if (data.locations[player.location].inspectables[toInspect] != undefined) {
+            var text = data.locations[player.location].inspectables[toInspect].findings;
+            console.log(text);
+            changeSubText(text);
+        }
+    }
+    else if (inspectable == "" && data.locations[player.location].items != undefined) {
+        if (data.locations[player.location].items[0] != undefined) {
+            var item = data.locations[player.location].items[0];
+            changeSubText("There is a " + item + " here.");
+        }
+    }
+    else if (inspectable == "" && data.locations[player.location].inspectables == undefined) {
+        changeSubText("You look around but can't seem to find anything useful.");
+    }
 }
 
 function moveTo(location) {
     // if there are no enemies the player can move otherwise "run" is the only option
-    if (data.locations[player.location].enemies == undefined) {
+    if (data.locations[player.location].enemies == undefined || location == player.previousLocation) {
         player.previousLocation = player.location;
         player.location = location;
         displayStory(location);
+    }
+    else {
+        console.log("enemies not defeated");
     }
 }
 
 function run () {
     if (player.location != null) {
+        data.locations[player.location].visited = false;
         moveTo(player.previousLocation);
     }
 }
@@ -366,17 +555,13 @@ function clickEnter(e) {
                     console.log("Invalid location");
                 }
             }
-            else if (data.commands[command] == "inspect" && data.locations[player.location].inspectables != undefined){
-                var toInspect = input.replace(command + " ", "");
-                console.log(toInspect);
-                toInspect = Object.keys(data.locations[player.location].inspectables).filter(inspect => Object.values(data.locations[player.location].inspectables[inspect].keywords).some(x => x == toInspect));
-                if (data.locations[player.location].inspectables[toInspect] != undefined) {
-                    console.log("inspect " + toInspect);
-                    inspect(toInspect);
+            else if (data.commands[command] == "inspect" && (data.locations[player.location].inspectables != undefined || data.locations[player.location].items != undefined)) {
+                var toInspect = input.replace(command, "");
+                // this esentaily checks if there is an argument and cuts the space off if so
+                if (toInspect[0] == ' ') {
+                    toInspect = toInspect.slice(1);
                 }
-                else {
-                    console.log("Invalid inspectable");
-                }
+                inspect(toInspect);
             }
             else if (data.commands[command] == "pick up" && data.locations[player.location].items != undefined) {
                 var toPickUp = input.replace(command + " ", "");
@@ -395,6 +580,11 @@ function clickEnter(e) {
             }
             else if (data.commands[command] == "run" && player.previousLocation != null) {
                 run();
+            }
+            else if (data.commands[command] == "info") {
+                var item = input.replace(command + " ", ""); 
+                console.log(item);
+                info(item);
             }
             else {
                 // turn border red or something

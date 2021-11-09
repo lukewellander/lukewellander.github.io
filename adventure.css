@@ -82,6 +82,7 @@
     -o-animation: fadeIn linear 1s;
     -ms-animation: fadeIn linear 1s;
     animation: fadeIn linear 1s;
+    tab-size: 8;
   }
 
   .fade-out-text {
@@ -94,6 +95,7 @@
     -o-animation: fadeOut linear 1s;
     -ms-animation: fadeOut linear 1s;
     animation: fadeOut linear 1s;
+    tab-size: 8;
   }
   
   @keyframes fadeIn {
