@@ -77,11 +77,29 @@ var data = {
             "visited" : false,
             "locations": {
                 "startTown" : ["east", "path", "town", "small town", "village", "small village", "hike back", "hike back down", "back"],
-                "mountains" : ["mountains", "mountain", "north", "northern path", "north facing path", "deeper into mountains", "right"],
+                "mountainTemple" : ["mountains", "mountain", "north", "northern path", "north facing path", "deeper into mountains", "right"],
                 "mineshaft" : ["into mineshaft", "mine", "into mine", "mineshaft", "left", "west",]
             },
             "story": "You head up the path that leads into the mountains, you reach a fork in the road, the left path leads to a mineshaft, the right path leads deeper into the mountains, and of course you can always hike back down to the town.",
             "returnStory" : "The road splits here, one path leads to a mineshaft, another leads deep into the mountains, yet another leads to a small town.",
+        },
+        "mountainTemple":{
+            "visited" : false,
+            "locations":{
+                "startOfMountains" : ["back down mountain", "down", "back", "south", "southern path", "south path", "down mountain"]
+            },
+            "enemies" : {
+                "old man" : {
+                    "health" : 900,
+                    "story" : {
+                        "success" : "You answer the old mans riddle correctly, he rewards you by offering you a gift of two swords, an ice sword and a fire sword. The only way to leave is down the mountain",
+                        "failure" : "Don't attack old people it's not nice.",
+                    },
+                    "drops" : ["fire sword", "ice sword"]
+                }
+            },
+            "story" : "You make your way up the path, you travel for what feels like forever trecking mile after mile up the steep mountain path. Eventually you come to an ancient mountain temple, in the court yard there stands an old man he turns to you. \n\n I am always hungry\nI must always be fed\n The finger I touch,\nWill soon turn red\nWhat am I?",
+            "returnStory" : "The ancient temple is peaceful no wonder the old man seems to like it here so much. The only way back is down the mountain.",
         },
         "mineshaft": {
             "visited" : false,
@@ -406,8 +424,8 @@ var data = {
             "locations" : {
                 "maze23" : ["north", "n", "back in maze", "maze", "back"],
             },
-            "items" : ["red key"],
-            "story" : "You end up in a small open area, you see the red key on a stone pillar in the middle of the clearing. The only way out is north back into the maze.",
+            "items" : ["red key", "knight shield"],
+            "story" : "You end up in a small open area, you see the red key on a stone pillar in the middle of the clearing. A knight shield is also laying at the base of the pillar. The only way out is north back into the maze.",
             "returnStory" : "You're back in the open area where you discovered the red key. The only way out is north.",
         },
         "maze25" : {
@@ -514,6 +532,11 @@ var data = {
         "info" : "info",
         "about" : "about",
         "use" : "use",
+        "fire" : "fire",
+        "a fire" : "fire",
+        "you are fire" : "fire",
+        "you're fire" : "fire",
+        "youre fire" : "fire",
     },
 }
 var player = {
@@ -589,7 +612,7 @@ function info(item) {
         if (data.items[item].type == "weapon") {
             text += "---Damage: " + data.items[item].damage + "\n";
         }
-        else {
+        else if (data.items[item].type == "armor" || data.items[item].type == "shield"){
             text += "---Protection: " + data.items[item].protection + "\n";
         }
         text += "---Description: " + data.items[item].description;
@@ -626,6 +649,29 @@ async function attack(enemy) {
         else {
             changeSubText(data.locations[player.location].enemies[enemy].story.failure);
             data.locations[player.location].visited = false;
+        }
+    }
+}
+
+function answerRiddle() {
+    if (data.locations.mountainTemple.enemies != undefined) {
+        var enemy = "old man";
+        data.locations[player.location].story = data.locations[player.location].enemies[enemy].story.success;
+        data.locations[player.location].visited = false;
+        displayStory(player.location);
+        data.locations[player.location].visited = true;
+        // if the enemy has something to drop
+        if (data.locations[player.location].enemies[enemy].drops != undefined) {
+            if (data.locations[player.location].items == undefined) {
+                data.locations[player.location].items = [];
+            }
+            data.locations[player.location].items.push(data.locations[player.location].enemies[enemy].drops);
+        }
+        // remove the enemy from this scene
+        delete data.locations[player.location].enemies[enemy];
+        // if there are no more enemies in this scene remove the category
+        if (data.locations[player.location].enemies.length = 0) {
+            delete data.locations[player.location].enemies;
         }
     }
 }
@@ -819,6 +865,9 @@ function clickEnter(e) {
                 var item = input.replace(command + " ", ""); 
                 console.log(item);
                 info(item);
+            }
+            else if (data.commands[command == "fire" && player.location == "mountainTemple"]) {
+                answerRiddle();
             }
             else {
                 // turn border red or something
