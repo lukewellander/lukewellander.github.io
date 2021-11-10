@@ -48,7 +48,7 @@ var data = {
             "visited" : false,
             "locations": {
                 "startTown" : ["north", "path", "town", "small town", "village", "small village", "back", "other side", "other side of bridge", ],
-                "forestEntrance" : ["forest", "dark forest", "forest path"],
+                "forestEntrance" : ["forest", "dark forest", "forest path", "east", "east path"],
                 "castleGate" : ["castle", "west", "west path", "large castle"],
             },
             "enemies" : {
@@ -68,9 +68,9 @@ var data = {
             "locked" : true,
             "locations" : {
                 "castle" : ["open gate", "through gate", "gate", "castle", "inside"],
-                "bridge" : [""]
+                "bridge" : ["back to bridge", ]
             },
-            "story" : "You follow the path that leads to the castle as you near the castle you see that the path leads to a large gate in the castle walls. The gate has two padlocks blue and red they prevent you from opening it.",
+            "story" : "You follow the path that leads to the castle as you near the castle you see that the path leads to a large gate in the castle walls. The gate has two padlocks blue and red they prevent you from opening it. Until you find the keys and use them on the gate the only way to go is back to the bridge.",
             "returnStory" : "",
         },
         "startOfMountains":{
@@ -179,10 +179,244 @@ var data = {
             "visited" : false,
             "locations" : {
                 "mineshaftLevelFour" : ["up", "up ladder", "back", "back up ladder", "three", "level four"],
-                },
+            },
             "items" : ["blue key",], 
             "story" : "You head down yet another ladder relieved to see that there is no monster waiting here for you, instead there is a blue key sitting on top of a stone column. The only way out is back up the ladder.",
             "returnStory" : "You're back at the lowest level of the mine, this is where you discovered the blue key. The only way out is back up the ladder.",
+        },
+        "forestEntrance" : {
+            "visited" : false,
+            "locations" : {
+                "bridge" : ["bridge", "back bridge",],
+                "maze1" : ["maze",],
+            },
+            "story" : "You follow the path into the dark forest until you come upon a large hedge maze you dont know what is hidden in the maze but you think it could be helpful, you can enter the maze or head back to the bridge.",
+            "returnStory" : "You are in the forest on the path that leads to both the maze and the bridge.",
+        },
+        "maze1" : {
+            "visited" : false,
+            "locations" : {
+                "maze2" : ["south", "s"],
+                "maze11" : ["north", "n"],
+                "forestEntrance" : ["exit", "forest", "back forest", "dark forest"]
+            },
+            "story" : "You are at the entrance of the maze facing east, the path goes to the north, to the south, or west to leave the maze.",
+            "returnStory" : "You're back at the entrance to the maze the exit is to the west, the maze leads both north and south.",
+        },
+        "maze2" : {
+            "visited" : false,
+            "locations" : {
+                "maze1" : ["north", "n"],
+                "maze3" : ["south", "s"],
+                "maze25" : ["east", "e"],
+            },
+            "story" : "You reach a three way crossroad, the maze leads north, east, and south.",
+            "returnStory" : "You reach a three way crossroad, the maze leads north, east, and south.",
+        },
+        "maze3" : {
+            "visited" : false,
+            "locations" : {
+                "maze2" : ["north", "n"],
+                "maze4" : ["east", "e"],
+            },
+            "story" : "You end up at a corner, the maze leads north and east.",
+            "returnStory" : "You end up at a corner, the maze leads north and east.",
+        },
+        "maze4" : {
+            "visited" : false,
+            "locations" : {
+                "maze3" : ["west", "w"],
+                "maze5" : ["east", "e"],
+                "maze15" : ["north", "n"],
+            },
+            "story" : "You make your way to a three way crossroad, the maze leads north, east, and west.",
+            "returnStory" : "You make your way to a three way crossroad, the maze leads north, east, and west.",
+        },
+        "maze5" : {
+            "visited" : false,
+            "locations" : {
+                "maze4" : ["west", "w"],
+                "maze6" : ["north", "n"],
+            },
+            "story" : "You go until you hit a corner, the maze leads north and west.",
+            "returnStory" : "You go until you hit a corner, the maze leads north and west.",
+        },
+        "maze6" : {
+            "visited" : false,
+            "locations" : {
+                "maze7" : ["west", "w"],
+                "maze5" : ["south", "s"],
+                "maze8" : ["east", "e"],
+            },
+            "story" : "You end up at a three way crossroad, the maze leads west.",
+            "returnStory" : "You end up at a three way crossroad, the maze leads west.",
+        },
+        "maze7" : {
+            "visited" : false,
+            "locations" : {
+                "maze6" : ["east", "e"],
+            },
+            "story" : "You reach a dead end, the maze only leads to the east.",
+            "returnStory" : "You reach a dead end, the maze only leads to the east.",
+        },
+        "maze8" : {
+            "visited" : false,
+            "locations" : {
+                "maze6" : ["west", "w"],
+                "maze9" : ["south", "s"],
+            },
+            "story" : "You reach a corner, the maze leads south, and west.",
+            "returnStory" : "You reach a corner, the maze leads south, and west.",
+        },
+        "maze9" : {
+            "visited" : false,
+            "locations" : {
+                "maze10" : ["west", "w"],
+                "maze8" : ["north", "n"],
+            },
+            "story" : "You end up at a corner, the maze leads north, and west.",
+            "returnStory" : "You end up at a corner, the maze leads north, and west.",
+        },
+        "maze10" : {
+            "visited" : false,
+            "locations" : {
+                "maze9" : ["east", "e"],
+            },
+            "story" : "You reach a dead end, the maze only leads to the east.",
+            "returnStory" : "You reach a dead end, the maze only leads to the east.",
+        },
+        "maze11" : {
+            "visited" : false,
+            "locations" : {
+                "maze12" : ["east", "e"],
+                "maze1" : ["south", "s"],
+            },
+            "story" : "You end up at a corner, the maze leads east and south.",
+            "returnStory" : "You end up at a corner, the maze leads east and south.",
+        },
+        "maze12" : {
+            "visited" : false,
+            "locations" : {
+                "maze13" : ["east", "e"],
+                "maze14" : ["south", "s"],
+                "maze11" : ["west", "w"],
+            },
+            "story" : "You're at a three way crossroad, the maze leads east, south, and west.",
+            "returnStory" : "You're at a three way crossroad, the maze leads east, south, and west.",
+        },
+        "maze13" : {
+            "visited" : false,
+            "locations" : {
+                "maze12" : ["west", "w"],
+            },
+            "story" : "You end up at a dead end, the maze only leads to the west.",
+            "returnStory" : "You end up at a dead end, the maze only leads to the west.",
+        },
+        "maze14" : {
+            "visited" : false,
+            "locations" : {
+                "maze12" : ["north", "n"],
+            },
+            "story" : "This path is a dead end, the maze only leads to the north.",
+            "returnStory" : "This path is a dead end, the maze only leads to the north.",
+        },
+        "maze15" : {
+            "visited" : false,
+            "locations" : {
+                "maze16" : ["north", "n"],
+                "maze18" : ["east", "e"],
+                "maze4" : ["south", "s"],
+                "maze17" : ["west", "w"],
+            },
+            "story" : "You stumble upon a four war crossroad, the maze leads in all directions north, east, south, and west.",
+            "returnStory" : "You stumble upon a four war crossroad, the maze leads in all directions north, east, south, and west.",
+        },
+        "maze16" : {
+            "visited" : false,
+            "locations" : {
+                "maze15" : ["south", "s"],
+            },
+            "story" : "You reach a dead end, the maze only leads to the south.",
+            "returnStory" : "You reach a dead end, the maze only leads to the south.",
+        },
+        "maze17" : {
+            "visited" : false,
+            "locations" : {
+                "maze15" : ["east", "e"],
+            },
+            "story" : "You reach a dead end, the maze only leas to the east.",
+            "returnStory" : "You reach a dead end, the maze only leads to the east.",
+        },
+        "maze18" : {
+            "visited" : false,
+            "locations" : {
+                "maze20" : ["north", "n"],
+                "maze19" : ["south", "s"],
+                "maze17" : ["west", "w"],
+            },
+            "story" : "You wind up at a three way crossroad, the maze leads north, south, and west.",
+            "returnStory" : "You wind up at a three way crossroad, the maze leads north, south, and west.",
+        },
+        "maze19" : {
+            "visited" : false,
+            "locations" : {
+                "maze18" : ["north", "n"],
+            },
+            "story" : "You're at a dead end, the maze only leads to the north.",
+            "returnStory" : "You're at a dead end, the maze only leads to the north.",
+        },
+        "maze20" : {
+            "visited" : false,
+            "locations" : {
+                "maze22" : ["north", "n"],
+                "maze21" : ["east", "e"],
+                "maze18" : ["south", "s"],
+            },
+            "story" : "You reach a three way intersection, the maze leads north, east, and south.",
+            "returnStory" : "You reach a three way intersection, the maze leads north, east, and south.",
+        },
+        "maze21" : {
+            "visited" : false,
+            "locations" : {
+                "maze20" : ["west", "w"],
+            },
+            "story" : "This path is a dead end, the maze only leads to the west.",
+            "returnStory" : "This path is a dead end, the maze only leads to the west.",
+        },
+        "maze22" : {
+            "visited" : false,
+            "locations" : {
+                "maze23" : ["east", "e"],
+                "maze20" : ["south", "s"],
+            },
+            "story" : "You're at a corner in the maze, the maze leads east and south.",
+            "returnStory" : "You're at a corner in the maze, the maze leads east and south.",
+        },
+        "maze23" : {
+            "visited" : false,
+            "locations" : {
+                "maze22" : ["west", "w"],
+                "maze24" : ["south", "s"],
+            },
+            "story" : "You run into another corner, the maze leads south and west.",
+            "returnStory" : "You run into another corner, the maze leads south and west.",
+        },
+        "maze24" : {
+            "visited" : false,
+            "locations" : {
+                "maze23" : ["north", "n", "back in maze", "maze", "back"],
+            },
+            "items" : ["red key"],
+            "story" : "You end up in a small open area, you see the red key on a stone pillar in the middle of the clearing. The only way out is north back into the maze.",
+            "returnStory" : "You're back in the open area where you discovered the red key. The only way out is north.",
+        },
+        "maze25" : {
+            "visited" : false,
+            "locations" : {
+                "maze2" : ["west", "w"],
+            },
+            "story" : "You reach a dead end, the maze only leads to the west.",
+            "returnStory" : "You reach a dead end, the maze only leads to the west.",
         },
     },
     "items": {
