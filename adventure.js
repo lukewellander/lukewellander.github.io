@@ -1,3 +1,5 @@
+var won = false;
+
 var data = {
     "locations":{
         "startCave": {
@@ -49,7 +51,7 @@ var data = {
             "locations": {
                 "startTown" : ["north", "path", "town", "small town", "village", "small village", "back", "other side", "other side of bridge", ],
                 "forestEntrance" : ["forest", "dark forest", "forest path", "east", "east path"],
-                "castleGate" : ["castle", "west", "west path", "large castle"],
+                "castleGate" : ["castle", "west", "west path", "large castle", "gate", "castle gate"],
             },
             "enemies" : {
                 "wolf": {
@@ -65,12 +67,33 @@ var data = {
         },
         "castleGate" : {
             "visited" : false,
-            "locked" : true,
+            "locked" : {
+                "red" : true,
+                "blue" : true,
+            },
             "locations" : {
-                "castle" : ["open gate", "through gate", "gate", "castle", "inside"],
-                "bridge" : ["back to bridge", ]
+                "castle" : ["open gate", "through gate", "gate", "castle", "inside", "path that leads castle"],
+                "bridge" : ["back to bridge", "bridge",]
             },
             "story" : "You follow the path that leads to the castle as you near the castle you see that the path leads to a large gate in the castle walls. The gate has two padlocks blue and red they prevent you from opening it. Until you find the keys and use them on the gate the only way to go is back to the bridge.",
+            "returnStory" : "You're back outside the castle walls, there is a gate here it has a red lock and a blue lock. If the locks are unlocked there is a path that leads to the castle otherwise the only other path leads back to the bridge.",
+        },
+        "castle" : {
+            "visited" : false,
+            "locations" : {
+                "castleGate" : ["back gate", "gate", "castle gate"],
+            },
+            "enemies" : {
+                "dragon" : {
+                    "headOneAlive" : true,
+                    "headTwoAlive" : true,
+                    "story" : {
+                        "success" : "Congratulations you defeated the dragon and saved the kingdom!",
+                        "failure" : "",
+                    },
+                },
+            },
+            "story" : "You make your way through the castle gate into a large stone courtyard, thats when you notice a masive two headed dragon. The first head notices you and shoots a fiery red flame in your direction. Now both heads have noticed you and the second head breaths an icey blue fire directly at you. ",
             "returnStory" : "",
         },
         "startOfMountains":{
@@ -624,7 +647,44 @@ function info(item) {
 }
 
 async function attack(enemy) {
-    if (data.locations[player.location].enemies[enemy] != undefined) {
+    var text = "You run at the dragon, with your " + player.weapon + " in hand. \n"
+    if (player.location == "castle" && (enemy == "dragon" || enemy == "two headed dragon")) {
+        if (player.weapon == "ice sword" && data.locations.castle.enemies.dragon.headOneAlive) {
+            data.locations.castle.enemies.dragon.headOneAlive = false;
+            text += "You get near the first head of the dragon and charge through its red hot flames. You take the ice sword an thrust it into the dragons neck, and with on last roar and spurt of fire the dragons head falls to the ground. "
+        }
+        else if (data.locations.castle.enemies.dragon.headOneAlive) {
+            text += "You get to the first dragon head and swing at its neck with the " + player.weapon + ", and with a loud clang the sword bounces right off doing no damage to the dragon at all. "
+        }
+        else if (data.locations.castle.enemies.dragon.headOneAlive == false) {
+            text += "The first head is already dead. "
+        }
+        text += "So you turn to the second head of the dragon. "
+        if (player.weapon == "fire sword" && data.locations.castle.enemies.dragon.headTwoAlive) {
+            data.locations.castle.enemies.dragon.headTwoAlive = false;
+            text += "You focus on the second head of the dragon and feel the icey chill of its breath. You clasp the fire sword in your hands, jump toward the dragon and stab it directly in the head. The dragon head shakes you of before finally collapsing to the ground with a loud thud.\n"
+        }
+        else if (data.locations.castle.enemies.dragon.headTwoAlive) {
+            text += "You're near the second dragon head and swing at its neck with the " + player.weapon + ", with a loud clang the sword bounces right off doing no damage to the dragon at all.\n"
+        }
+        else if (data.locations.castle.enemies.dragon.headTwoAlive == false) {
+            text += "The second head is still lifeless on the ground where you had killed it.\n"
+        }
+        if (data.locations.castle.enemies.dragon.headOneAlive || data.locations.castle.enemies.dragon.headTwoAlive) {
+            text += "You need to find a way to kill each of the dragons heads. You have a feeling that each one has its own weakness."
+        }
+
+        data.locations.castle.story = text;
+
+        data.locations[player.location].visited = false;
+        displayStory(player.location);
+        data.locations[player.location].visited = true;
+        
+        if (data.locations.castle.enemies.dragon.headOneAlive == false && data.locations.castle.enemies.dragon.headTwoAlive == false) {
+            won = true;
+        }
+    }
+    else if (data.locations[player.location].enemies[enemy] != undefined) {
         if (playerPower() >= data.locations[player.location].enemies[enemy].health) {
             data.locations[player.location].story = data.locations[player.location].enemies[enemy].story.success;
             data.locations[player.location].visited = false;
@@ -726,6 +786,29 @@ function pickUp(item) {
     }
 }
 
+function use(item) {
+    if (player.inventory.some(x => x == item)) {
+        if (player.location == "castleGate") {
+            if (item == "red key") {
+                if (data.locations[castleGate].locked.red == true){
+                    data.locations[castleGate].locked.red = false;
+                    changeSubText("You use the red key on the red lock and with a satisfying click the lock falls of the gate.");
+                }
+                else {
+                    changeSubText("The red lock is already unlocked.")
+                }
+            }
+            else if (data.locations[castleGate].locked.blue == true){
+                data.locations[castleGate].locked.blue = false;
+                changeSubText("You use the blue key on the blue lock and with a satisfying click the lock falls of the gate.");
+            }
+            else {
+                changeSubText("The blue lock is already unlocked.")
+            }
+        }
+    }
+}
+
 function inspect(inspectable) {
     console.log(inspectable);
     if (Object.keys(data.locations[player.location].inspectables).some(inspect => Object.values(data.locations[player.location].inspectables[inspect].keywords).some(x => x == inspectable))) {
@@ -748,15 +831,33 @@ function inspect(inspectable) {
 }
 
 function moveTo(location) {
-    // if there are no enemies the player can move otherwise "run" is the only option
-    if (data.locations[player.location].enemies == undefined || location == player.previousLocation) {
-        player.previousLocation = player.location;
-        player.location = location;
-        displayStory(location);
+    // there are special rules for the castle gate because it is locked
+    if (player.location == "castleGate" && location == "castle") {
+        var text = "";
+        if (data.locations.castleGate.locked.red == true){
+            text += "The red lock is still locked.\n";
+        }
+        if (data.locations.castleGate.locked.blue == true) {
+            text += "The blue lock is still locked."
+        }
+        else if (data.locations.castleGate.locked.red == false) {
+            player.previousLocation = player.location;
+            player.location = location;
+            displayStory(location);
+        }
     }
     else {
-        console.log("enemies not defeated");
+        // if there are no enemies the player can move otherwise "run" is the only option
+        if (data.locations[player.location].enemies == undefined || location == player.previousLocation) {
+            player.previousLocation = player.location;
+            player.location = location;
+            displayStory(location);
+        }
+        else {
+            console.log("enemies not defeated");
+        }
     }
+    
 }
 
 function run () {
@@ -807,6 +908,15 @@ async function displayStory(location) {
 
     // this paragraph is just a place holder
     newSubText.classList.add("fade-in-text");
+
+
+    if (won) {
+        await delay(15);
+        data.locations[player.location].story = "Congratulations you defeated the dragon and saved the kingdom!";
+        data.locations[player.location].visited = false;
+        displayStory(player.location);
+        data.locations[player.location].visited = true;
+    }
 }
 
 
@@ -868,6 +978,11 @@ function clickEnter(e) {
             }
             else if (data.commands[command == "fire" && player.location == "mountainTemple"]) {
                 answerRiddle();
+            }
+            else if (data.commands[command] == "use") {
+                var item = input.replace(command + " ", ""); 
+                console.log(item);
+                use(item);
             }
             else {
                 // turn border red or something
