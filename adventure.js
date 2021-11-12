@@ -14,7 +14,7 @@ var data = {
             "visited" : false,
             "locations": {
                 "startCave" : ["cave"],
-                "startTown" : ["east", "path", "town", "small town", "village", "small village"]
+                "startTown" : ["east", "path", "town", "small town", "village", "small village", "down mountain side",]
             },
             "items": ["rusty sword",],
             "inspectables" : {
@@ -63,7 +63,7 @@ var data = {
                 },
             },
             "story": "You follow the path along the river until you come across a stone bridge leading over the river. You start to cross the bridge but notice a wolf blocking the other side of the bridge.",
-            "returnStory" : "Now that the wolf is dead you cross over the bridge easily. The path on the other side of the bridge leads to the town, the path on this side of the bridge goes, two directions, the east path leads to a dark forest and the west path leads to a large castle.",
+            "returnStory" : "Now that the wolf is dead you can cross over the bridge easily. The path on the other side of the bridge leads to the town, the path on this side of the bridge goes, two directions, the east path leads to a dark forest and the west path leads to a large castle.",
         },
         "castleGate" : {
             "visited" : false,
@@ -73,7 +73,7 @@ var data = {
             },
             "locations" : {
                 "castle" : ["open gate", "through gate", "gate", "castle", "inside", "path that leads castle"],
-                "bridge" : ["back to bridge", "bridge",]
+                "bridge" : ["back bridge", "bridge",]
             },
             "story" : "You follow the path that leads to the castle as you near the castle you see that the path leads to a large gate in the castle walls. The gate has two padlocks blue and red they prevent you from opening it. Until you find the keys and use them on the gate the only way to go is back to the bridge.",
             "returnStory" : "You're back outside the castle walls, there is a gate here it has a red lock and a blue lock. If the locks are unlocked there is a path that leads to the castle otherwise the only other path leads back to the bridge.",
@@ -93,7 +93,7 @@ var data = {
                     },
                 },
             },
-            "story" : "You make your way through the castle gate into a large stone courtyard, thats when you notice a masive two headed dragon. The first head notices you and shoots a fiery red flame in your direction. Now both heads have noticed you and the second head breaths an icey blue fire directly at you. ",
+            "story" : "You make your way through the castle gate into a large stone courtyard, thats when you notice a massive two headed dragon. The first head notices you and shoots a fiery red flame in your direction. Now both heads have noticed you and the second head breaths an icey blue fire directly at you. ",
             "returnStory" : "",
         },
         "startOfMountains":{
@@ -101,7 +101,7 @@ var data = {
             "locations": {
                 "startTown" : ["east", "path", "town", "small town", "village", "small village", "hike back", "hike back down", "back"],
                 "mountainTemple" : ["mountains", "mountain", "north", "northern path", "north facing path", "deeper into mountains", "right"],
-                "mineshaft" : ["into mineshaft", "mine", "into mine", "mineshaft", "left", "west",]
+                "mineshaft" : ["in mine", "in mineshaft", "into mineshaft", "mine", "into mine", "mineshaft", "left", "west",]
             },
             "story": "You head up the path that leads into the mountains, you reach a fork in the road, the left path leads to a mineshaft, the right path leads deeper into the mountains, and of course you can always hike back down to the town.",
             "returnStory" : "The road splits here, one path leads to a mineshaft, another leads deep into the mountains, yet another leads to a small town.",
@@ -148,9 +148,9 @@ var data = {
             },
             "enemies" : {
                 "giant spider": {
-                    "health" : 3,
+                    "health" : 2,
                     "story" : {
-                        "success":"You quickly slice off the spiders legs before it could grab you with big fangs. With one final stab you finish off the spider as it lay dead in a pile of legs. Beyond the spiders body you see a ladder leading down into the mine and an iron sword, perhaps it was dropped by the last adventurer that made their way into the mine.",
+                        "success":"You quickly slice off the spiders legs before it could grab you with its big fangs. With one final stab you finish off the spider as it lay dead in a pile of legs. Beyond the spiders body you see a ladder leading down into the mine and an iron sword, perhaps it was dropped by the last adventurer that made their way into the mine.",
                         "failure":"You advance towards the spider, but the spider is too fast. It darts up the wall of the mineshaft before leaping directly down onto you. You manage to shove it off before it can get a bite out of you, you better run away before it attacks again."
                     },
                     "drops" : "iron sword",
@@ -167,9 +167,9 @@ var data = {
             },
             "enemies" : {
                 "goblin": {
-                    "health" : 4,
+                    "health" : 3,
                     "story" : {
-                        "success":"The goblin moves quick but you are able to over power it quite easily. You quickly finish off the goblin, and notice in the stash of the goblins treasure there is some iron armor that may be of use. You see that you can go down the next ladder or back up the one you came from.",
+                        "success":"The goblin moves quick but you are able to overpower it quite easily. You quickly finish off the goblin, and notice in the stash of the goblins treasure there is some iron armor that may be of use. You see that you can go down the next ladder or back up the one you came from.",
                         "failure":"The goblin is jsut too quick, you can't seem to outmaneuver it. It might be best to just run."
                     },
                     "drops" : "iron armor",
@@ -188,20 +188,20 @@ var data = {
                 "orc": {
                     "health" : 5,
                     "story" : {
-                        "success":"The orc swings at you with its club, luckly the orc is very slow and you are able to dodge his attack, get behind him and slice him up from behind. The orc falls to his knees before colapsing all the way to the ground. The orc drops his iron shield as he falls. You can only see to ways to go on, the ladder that leads up, and a ladder that leads down.",
+                        "success":"The orc swings at you with its club, luckly the orc is very slow and you are able to dodge his attack, get behind him, and slice him up from behind. The orc falls to his knees before colapsing all the way to the ground. The orc drops his iron shield as he falls. You can only see to ways to go on, the ladder that leads up, and a ladder that leads down.",
                         "failure":"The orc hits you on the head knocking you out ... when you finaly come to the orc is accross the mineshaft paying no attention to you. Now would be a good time to run."
                     },
                     "drops" : "iron shield",
                 },
             },
-            "story" : "You climb down to the next level wondering how much funrther this mineshaft goes. At the bottom of the ladder you turn around to find an orc living in this section of the mine.",
+            "story" : "You climb down to the next level wondering how much further this mineshaft goes. At the bottom of the ladder you turn around to find an orc living in this section of the mine.",
             "returnStory" : "You are back at the third level of the mine where the orc had been living. You can go up the ladder or down the other ladder.",
         },
         "mineshaftLevelFour" : {
             "visited" : false,
             "locations" : {
                 "mineshaftLevelThree" : ["up", "up ladder", "back", "three", "level three"],
-                "mineshaftLevelFive" : ["continue down ladder", "down ladder", "down", "further", "further into mine", "down further into mine", "next level", "down next level", "fifth level"],
+                "mineshaftLevelFive" : ["continue down ladder", "down another ladder", "down ladder", "down", "further", "further into mine", "down further into mine", "next level", "down next level", "fifth level"],
             },
             "enemies" : {
                 "rock golem": {
@@ -239,9 +239,9 @@ var data = {
             "locations" : {
                 "maze2" : ["south", "s"],
                 "maze11" : ["north", "n"],
-                "forestEntrance" : ["exit", "forest", "back forest", "dark forest"]
+                "forestEntrance" : ["exit", "forest", "back forest", "dark forest", "go west", "maze", "entrance"]
             },
-            "story" : "You are at the entrance of the maze facing east, the path goes to the north, to the south, or west to leave the maze.",
+            "story" : "You are at the entrance of the maze facing east, the path goes to the north, to the south, or to the west to leave the maze.",
             "returnStory" : "You're back at the entrance to the maze the exit is to the west, the maze leads both north and south.",
         },
         "maze2" : {
@@ -289,8 +289,8 @@ var data = {
                 "maze5" : ["south", "s"],
                 "maze8" : ["east", "e"],
             },
-            "story" : "You end up at a three way crossroad, the maze leads west.",
-            "returnStory" : "You end up at a three way crossroad, the maze leads west.",
+            "story" : "You end up at a three way crossroad, the maze leads east, south, and west.",
+            "returnStory" : "You end up at a three way crossroad, the maze leads east, south, and west.",
         },
         "maze7" : {
             "visited" : false,
@@ -369,8 +369,8 @@ var data = {
                 "maze4" : ["south", "s"],
                 "maze17" : ["west", "w"],
             },
-            "story" : "You stumble upon a four war crossroad, the maze leads in all directions north, east, south, and west.",
-            "returnStory" : "You stumble upon a four war crossroad, the maze leads in all directions north, east, south, and west.",
+            "story" : "You stumble upon a four way crossroad, the maze leads in all directions north, east, south, and west.",
+            "returnStory" : "You stumble upon a four way crossroad, the maze leads in all directions north, east, south, and west.",
         },
         "maze16" : {
             "visited" : false,
@@ -393,7 +393,7 @@ var data = {
             "locations" : {
                 "maze20" : ["north", "n"],
                 "maze19" : ["south", "s"],
-                "maze17" : ["west", "w"],
+                "maze15" : ["west", "w"],
             },
             "story" : "You wind up at a three way crossroad, the maze leads north, south, and west.",
             "returnStory" : "You wind up at a three way crossroad, the maze leads north, south, and west.",
@@ -600,21 +600,21 @@ function equip(item) {
                 player.inventory.unshift(player.weapon);
             }
             player.weapon = item;
-            player.inventory.pop(item);
+            player.inventory = player.inventory.filter(x => x != item); // test
         }
         else if (data.items[item].type == "armor") {
             if (player.armor != null) {
                 player.inventory.unshift(player.armor);
             }
             player.armor = item;
-            player.inventory.pop(item);
+            player.inventory = player.inventory.filter(x => x != item); // test
         }
         else if (data.items[item].type == "shield") {
             if (player.shield != null) {
                 player.inventory.unshift(player.shield);
             }
             player.shield = item;
-            player.inventory.pop(item);
+            player.inventory = player.inventory.filter(x => x != item); //test
         }
         else {
             changeSubText("This item is not equipable");
@@ -646,6 +646,13 @@ function info(item) {
     }
 }
 
+
+/**
+ * handles player attacking monsters and the final dragon boss
+ * also handles the verification of 
+ * 
+ * @param enemy the enemy as a string that the player is attemting to attack
+ */
 async function attack(enemy) {
     var text = "You run at the dragon, with your " + player.weapon + " in hand. \n"
     if (player.location == "castle" && (enemy == "dragon" || enemy == "two headed dragon")) {
@@ -699,10 +706,7 @@ async function attack(enemy) {
             }
             // remove the enemy from this scene
             delete data.locations[player.location].enemies[enemy];
-            // if there are no more enemies in this scene remove the category
-            if (data.locations[player.location].enemies.length = 0) {
-                delete data.locations[player.location].enemies;
-            }
+            delete data.locations[player.location].enemies;
         }
         // if the player fails to kill the enemy show the failure story and set this scene like 
         // we never visited so that the story will show up again
@@ -749,7 +753,7 @@ function refreshInventory() {
     }
     text += "</div> <br>"
     for (var i = 0; i < player.inventory.length; i ++) {
-        text += player.inventory[i] + "\n";
+        text += player.inventory[i] + "<br>";
     }
     document.getElementById("inventory").innerHTML = text;
 }
@@ -776,6 +780,7 @@ function pickUp(item) {
     {
         player.inventory.unshift(item);
         delete data.locations[player.location].items[index];
+        delete data.locations[player.location].inspectables;
         var text = "You found the " + item;
 
         changeSubText(text);
@@ -790,16 +795,16 @@ function use(item) {
     if (player.inventory.some(x => x == item)) {
         if (player.location == "castleGate") {
             if (item == "red key") {
-                if (data.locations[castleGate].locked.red == true){
-                    data.locations[castleGate].locked.red = false;
+                if (data.locations.castleGate.locked.red == true){
+                    data.locations.castleGate.locked.red = false;
                     changeSubText("You use the red key on the red lock and with a satisfying click the lock falls of the gate.");
                 }
                 else {
                     changeSubText("The red lock is already unlocked.")
                 }
             }
-            else if (data.locations[castleGate].locked.blue == true){
-                data.locations[castleGate].locked.blue = false;
+            else if (data.locations.castleGate.locked.blue == true){
+                data.locations.castleGate.locked.blue = false;
                 changeSubText("You use the blue key on the blue lock and with a satisfying click the lock falls of the gate.");
             }
             else {
@@ -809,27 +814,37 @@ function use(item) {
     }
 }
 
+/**
+ * 
+ * @param inspectable can be a string with a value or an empty string
+ */
 function inspect(inspectable) {
-    console.log(inspectable);
-    if (Object.keys(data.locations[player.location].inspectables).some(inspect => Object.values(data.locations[player.location].inspectables[inspect].keywords).some(x => x == inspectable))) {
-        toInspect = Object.keys(data.locations[player.location].inspectables).filter(inspect => Object.values(data.locations[player.location].inspectables[inspect].keywords).some(x => x == inspectable));
-        if (data.locations[player.location].inspectables[toInspect] != undefined) {
-            var text = data.locations[player.location].inspectables[toInspect].findings;
-            console.log(text);
-            changeSubText(text);
+    console.log("inspecting" + inspectable);
+    if (data.locations[player.location].inspectables != undefined) {
+        if (Object.keys(data.locations[player.location].inspectables).some(inspect => Object.values(data.locations[player.location].inspectables[inspect].keywords).some(x => x == inspectable))) {
+            toInspect = Object.keys(data.locations[player.location].inspectables).filter(inspect => Object.values(data.locations[player.location].inspectables[inspect].keywords).some(x => x == inspectable));
+            if (data.locations[player.location].inspectables[toInspect] != undefined) {
+                var text = data.locations[player.location].inspectables[toInspect].findings;
+                console.log(text);
+                changeSubText(text);
+            }
         }
     }
-    else if (inspectable == "" && data.locations[player.location].items != undefined) {
+    if (inspectable == "" && data.locations[player.location].items != undefined) {
         if (data.locations[player.location].items[0] != undefined) {
             var item = data.locations[player.location].items[0];
             changeSubText("There is a " + item + " here.");
         }
     }
-    else if (inspectable == "" && data.locations[player.location].inspectables == undefined) {
+    else if (inspectable == "" && (data.locations[player.location].items == undefined || data.locations[player.location].items[0] == undefined)) {
         changeSubText("You look around but can't seem to find anything useful.");
     }
 }
 
+/**
+ * 
+ * @param location the location the player is trying to go
+ */
 function moveTo(location) {
     // there are special rules for the castle gate because it is locked
     if (player.location == "castleGate" && location == "castle") {
@@ -945,7 +960,7 @@ function clickEnter(e) {
                     console.log("Invalid location");
                 }
             }
-            else if (data.commands[command] == "inspect" && (data.locations[player.location].inspectables != undefined || data.locations[player.location].items != undefined)) {
+            else if (data.commands[command] == "inspect") {
                 var toInspect = input.replace(command, "");
                 // this esentaily checks if there is an argument and cuts the space off if so
                 if (toInspect[0] == ' ') {
@@ -976,8 +991,8 @@ function clickEnter(e) {
                 console.log(item);
                 info(item);
             }
-            else if (data.commands[command == "fire" && player.location == "mountainTemple"]) {
-                answerRiddle();
+            else if (data.commands[command] == "fire" && player.location == "mountainTemple") {
+                answerRiddle(); // TODO test
             }
             else if (data.commands[command] == "use") {
                 var item = input.replace(command + " ", ""); 
@@ -985,7 +1000,7 @@ function clickEnter(e) {
                 use(item);
             }
             else {
-                // turn border red or something
+                // turn border red or something maybe in v2
             }
         }
     }
