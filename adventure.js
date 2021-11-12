@@ -93,7 +93,7 @@ var data = {
                     },
                 },
             },
-            "story" : "You make your way through the castle gate into a large stone courtyard, thats when you notice a massive two headed dragon. The first head notices you and shoots a fiery red flame in your direction. Now both heads have noticed you and the second head breaths an icey blue fire directly at you. ",
+            "story" : "You make your way through the castle gate into a large stone courtyard, thats when you notice a massive two headed dragon. The first head notices you and shoots a fiery red flame in your direction. Now both heads have noticed you and the second head breaths an icy blue fire directly at you. ",
             "returnStory" : "",
         },
         "startOfMountains":{
@@ -669,7 +669,7 @@ async function attack(enemy) {
         text += "So you turn to the second head of the dragon. "
         if (player.weapon == "fire sword" && data.locations.castle.enemies.dragon.headTwoAlive) {
             data.locations.castle.enemies.dragon.headTwoAlive = false;
-            text += "You focus on the second head of the dragon and feel the icey chill of its breath. You clasp the fire sword in your hands, jump toward the dragon and stab it directly in the head. The dragon head shakes you of before finally collapsing to the ground with a loud thud.\n"
+            text += "You focus on the second head of the dragon and feel the icy chill of its breath. You clasp the fire sword in your hands, jump toward the dragon and stab it directly in the head. The dragon head shakes you of before finally collapsing to the ground with a loud thud.\n"
         }
         else if (data.locations.castle.enemies.dragon.headTwoAlive) {
             text += "You're near the second dragon head and swing at its neck with the " + player.weapon + ", with a loud clang the sword bounces right off doing no damage to the dragon at all.\n"
