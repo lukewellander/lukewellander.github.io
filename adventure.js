@@ -75,7 +75,7 @@ var data = {
                 "castle" : ["open gate", "through gate", "gate", "castle", "inside", "path that leads castle"],
                 "bridge" : ["back bridge", "bridge",]
             },
-            "story" : "You follow the path that leads to the castle as you near the castle you see that the path leads to a large gate in the castle walls. The gate has two padlocks blue and red they prevent you from opening it. Until you find the keys and use them on the gate the only way to go is back to the bridge.",
+            "story" : "You follow the path that leads to the castle as you near the castle you see that the path leads to a large gate in the castle walls. The gate has two padlocks blue and red they prevent you from opening it. Until you find the keys and use them on the gate the only way to go is back to the bridge, but once it's unlocked you can go to the castle.",
             "returnStory" : "You're back outside the castle walls, there is a gate here it has a red lock and a blue lock. If the locks are unlocked there is a path that leads to the castle otherwise the only other path leads back to the bridge.",
         },
         "castle" : {
@@ -93,7 +93,7 @@ var data = {
                     },
                 },
             },
-            "story" : "You make your way through the castle gate into a large stone courtyard, thats when you notice a massive two headed dragon. The first head notices you and shoots a fiery red flame in your direction. Now both heads have noticed you and the second head breaths an icy blue fire directly at you. ",
+            "story" : "You make your way through the castle gate into a large stone courtyard, that's when you notice a massive two headed dragon. The first head notices you and shoots a fiery red flame in your direction. Now both heads have noticed you and the second head breaths an icy blue fire directly at you. ",
             "returnStory" : "",
         },
         "startOfMountains":{
@@ -147,7 +147,7 @@ var data = {
                 "mineshaftLevelTwo" : ["down ladder", "down", "further", "further into mine", "down further into mine", "next level", "down next level"],
             },
             "enemies" : {
-                "giant spider": {
+                "spider": {
                     "health" : 2,
                     "story" : {
                         "success":"You quickly slice off the spiders legs before it could grab you with its big fangs. With one final stab you finish off the spider as it lay dead in a pile of legs. Beyond the spiders body you see a ladder leading down into the mine and an iron sword, perhaps it was dropped by the last adventurer that made their way into the mine.",
@@ -229,7 +229,7 @@ var data = {
             "visited" : false,
             "locations" : {
                 "bridge" : ["bridge", "back bridge",],
-                "maze1" : ["maze",],
+                "maze1" : ["maze", "into maze"],
             },
             "story" : "You follow the path into the dark forest until you come upon a large hedge maze you dont know what is hidden in the maze but you think it could be helpful, you can enter the maze or head back to the bridge.",
             "returnStory" : "You are in the forest on the path that leads to both the maze and the bridge.",
@@ -658,7 +658,7 @@ async function attack(enemy) {
     if (player.location == "castle" && (enemy == "dragon" || enemy == "two headed dragon")) {
         if (player.weapon == "ice sword" && data.locations.castle.enemies.dragon.headOneAlive) {
             data.locations.castle.enemies.dragon.headOneAlive = false;
-            text += "You get near the first head of the dragon and charge through its red hot flames. You take the ice sword an thrust it into the dragons neck, and with on last roar and spurt of fire the dragons head falls to the ground. "
+            text += "You get near the first head of the dragon and charge through its red hot flames. You take the ice sword an thrust it into the dragons neck, and with one last roar and spurt of fire the dragons head falls to the ground. "
         }
         else if (data.locations.castle.enemies.dragon.headOneAlive) {
             text += "You get to the first dragon head and swing at its neck with the " + player.weapon + ", and with a loud clang the sword bounces right off doing no damage to the dragon at all. "
@@ -729,14 +729,13 @@ function answerRiddle() {
             if (data.locations[player.location].items == undefined) {
                 data.locations[player.location].items = [];
             }
-            data.locations[player.location].items.push(data.locations[player.location].enemies[enemy].drops);
+            player.inventory.push("fire sword");
+            player.inventory.push("ice sword");
+            refreshInventory();
         }
         // remove the enemy from this scene
         delete data.locations[player.location].enemies[enemy];
-        // if there are no more enemies in this scene remove the category
-        if (data.locations[player.location].enemies.length = 0) {
-            delete data.locations[player.location].enemies;
-        }
+        delete data.locations[player.location].enemies;
     }
 }
 
@@ -926,7 +925,7 @@ async function displayStory(location) {
 
 
     if (won) {
-        await delay(15);
+        await delay(20);
         data.locations[player.location].story = "Congratulations you defeated the dragon and saved the kingdom!";
         data.locations[player.location].visited = false;
         displayStory(player.location);
