@@ -1,5 +1,6 @@
 body {
     margin-right:auto;
+    background-color: darkgrey;
 }
 
 #title {
@@ -9,6 +10,13 @@ body {
 
 #cal {
     float: right;
+}
+
+button {
+    border: black, solid, 4px;
+    border-radius: 15px;
+    height: 40px;
+    background-color: #cfc;
 }
 
 .day {
