@@ -4,7 +4,7 @@
             "name": "Launch Microsoft Edge and open the Edge DevTools",
             "request": "launch",
             "type": "vscode-edge-devtools.debug",
-            "url": "file:///D:/Documents/George%20Fox%20Work/Semester_7/CSIS_304_Web_Based_Programming/Website/lukewellander.github.io/adventure.html" // Provide your project's url to finish configuring
+            "url": "file:///D:/Documents/George%20Fox%20Work/Semester_7/CSIS_304_Web_Based_Programming/Website/lukewellander.github.io/factOfTheDay.html" // Provide your project's url to finish configuring
         }
     ]
 }

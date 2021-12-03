@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>lukewellander.com</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="factOfTheDay.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body> 
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
+    <div id="title">
+      <h1>Fact Of The Day</h1>
+      <p>Generates a fact for everyday of the month. I hope to be able to export to an iCal file in the future. This would allow users to import daily facts into their Google Calendar easily.
+        <br><br>
+        If you generate too many calendars in a short time the random fact api will limit requests. If this happens waiting a small time will usually fix the problem.
+      </p>
+    </div>
+    <div id="cal">
+
+    </div>
+    
+    <button onclick=generateCal()>Generate New Calendar</button>
+    <script src="factOfTheDay.js"></script>
+  </body>
+</html>

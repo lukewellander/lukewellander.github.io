@@ -1,0 +1,92 @@
+body {
+    margin-right:auto;
+}
+
+#title {
+    float: left;
+    max-width: 20%;
+}
+
+#cal {
+    float: right;
+}
+
+.day {
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration:none;
+    color:#000;
+    background:#ffc;
+    display: block;
+    height: 9em;
+    width: 9em;
+    margin: 0.1em;
+    padding: 1em;
+    transition: transform .15s linear;
+}
+
+.day h2 {
+    margin: 0;
+}
+
+.day p {
+    margin: 0;
+}
+
+#cal {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+}
+
+.day {
+    transform:rotate(-6deg);
+}
+
+.day:nth-child(2n) {
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+}
+
+.day:nth-child(3n) {
+    transform:rotate(-3deg);
+    position:relative;
+    top:5px;
+}
+
+.day:nth-child(5n) {
+    transform:rotate(5deg);
+    position:relative;
+    top:5px;
+}
+
+#cal .day:hover, #cal .day:focus {
+    box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    transform: scale(1.25);
+    position:relative;
+    z-index:5;
+}
+
+.day:nth-child(2n) {
+    position:relative;
+    top:5px;
+    background:#cfc;
+}
+
+.day:nth-child(3n) {
+    position:relative;
+    top:-5px;
+    background:#ccf;
+}
+
+.day:nth-child(5n) {
+    position:relative;
+    top:-5px;
+    background:#fd9cc8;
+}
+
+.day:nth-child(9n) {
+    position:relative;
+    top:-5px;
+    background:#a3fdff;
+}
