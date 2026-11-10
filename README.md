@@ -9,8 +9,8 @@ Marketing site for MyFit, an iPhone and Apple Watch workout tracker, published w
 - `privacy.html` — privacy policy
 - `404.html` — not-found page
 - `styles.css` — shared styles
-- `script.js` — navigation, scroll reveals, and small interactions
-- `assets/` — app icon and logo
+- `script.js` — navigation and small interactions
+- `assets/` — app icon
 
 ## Local preview
 

@@ -4,7 +4,6 @@
   var header = document.getElementById("site-header");
   var menuToggle = document.querySelector(".menu-toggle");
   var navLinks = document.querySelectorAll(".site-nav a");
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* Mobile navigation */
   function closeMenu() {
@@ -44,42 +43,6 @@
 
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
-
-  /* Reveal sections as they enter the viewport */
-  var revealItems = document.querySelectorAll(".reveal");
-
-  if (reduceMotion || !("IntersectionObserver" in window)) {
-    revealItems.forEach(function (item) {
-      item.classList.add("is-visible");
-    });
-  } else {
-    var revealObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-    );
-
-    revealItems.forEach(function (item) {
-      revealObserver.observe(item);
-    });
-  }
-
-  /* Soft spotlight that follows the pointer on feature cards */
-  if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
-    document.querySelectorAll(".feature-card").forEach(function (card) {
-      card.addEventListener("pointermove", function (event) {
-        var rect = card.getBoundingClientRect();
-        card.style.setProperty("--mx", ((event.clientX - rect.left) / rect.width) * 100 + "%");
-        card.style.setProperty("--my", ((event.clientY - rect.top) / rect.height) * 100 + "%");
-      });
-    });
-  }
 
   /* Current year */
   var year = new Date().getFullYear();
