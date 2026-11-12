@@ -442,22 +442,26 @@ textarea {
 .device {
   position: relative;
   width: 100%;
-  padding: 8px;
+  padding: 7px;
+  overflow: hidden;
   border: 1px solid var(--border-strong);
-  border-radius: 44px;
+  border-radius: 40px;
   background: var(--surface-2);
-  box-shadow: var(--shadow);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.4);
 }
 
 .device img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 36px;
+  aspect-ratio: 720 / 1560;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 33px;
 }
 
 .device-hero {
-  width: 300px;
+  width: 250px;
   flex-shrink: 0;
 }
 
@@ -475,6 +479,8 @@ textarea {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 416 / 496;
+  object-fit: cover;
   border-radius: 32px;
 }
 
@@ -490,7 +496,7 @@ textarea {
 }
 
 .watch-hero {
-  width: 128px;
+  width: 118px;
   flex-shrink: 0;
   margin-bottom: 10px;
 }
@@ -563,13 +569,19 @@ textarea {
 }
 
 .screen-card .device {
-  max-width: 280px;
+  max-width: 210px;
   margin: 0 auto;
+  padding: 5px;
+  border-radius: 34px;
+}
+
+.screen-card .device img {
+  border-radius: 29px;
 }
 
 .screen-card figcaption {
-  max-width: 280px;
-  margin: 18px auto 0;
+  max-width: 210px;
+  margin: 15px auto 0;
 }
 
 .screen-card h3 {
@@ -645,7 +657,7 @@ textarea {
 
 .watch-item {
   margin: 0;
-  width: 148px;
+  width: 140px;
 }
 
 .watch-item figcaption {
@@ -1090,7 +1102,7 @@ details[open] .faq-plus {
   }
 
   .device-hero {
-    width: 280px;
+    width: 230px;
   }
 
   .features-grid {
@@ -1199,11 +1211,11 @@ details[open] .faq-plus {
   }
 
   .device-hero {
-    width: 250px;
+    width: 210px;
   }
 
   .watch-hero {
-    width: 104px;
+    width: 88px;
   }
 
   .section-head {
@@ -1230,7 +1242,7 @@ details[open] .faq-plus {
   }
 
   .screen-card {
-    flex: 0 0 min(82%, 300px);
+    flex: 0 0 min(70%, 220px);
     scroll-snap-align: start;
   }
 
@@ -1317,7 +1329,7 @@ details[open] .faq-plus {
   }
 
   .device-hero {
-    width: min(300px, 82vw);
+    width: min(250px, 76vw);
   }
 
   .store-badge {
