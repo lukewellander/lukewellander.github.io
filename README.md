@@ -8,6 +8,7 @@ Marketing site for MyFit, an iPhone and Apple Watch workout tracker, published w
 - `support.html` — support and common questions
 - `privacy.html` — privacy policy
 - `404.html` — not-found page
+- `app-ads.txt` — IAB Tech Lab authorized seller record for Google AdMob
 - `styles.css` — shared styles
 - `script.js` — navigation and small interactions
 - `assets/` — app icon
