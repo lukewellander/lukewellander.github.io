@@ -11,7 +11,8 @@ Marketing site for MyFit, an iPhone and Apple Watch workout tracker, published w
 - `app-ads.txt` — IAB Tech Lab authorized seller record for Google AdMob
 - `styles.css` — shared styles
 - `script.js` — navigation and small interactions
-- `assets/` — app icon
+- `assets/` — app icon, original screenshots, and optimized web screenshots
+- `assets/screenshots/` — resized screenshots used on the site
 
 ## Local preview
 
