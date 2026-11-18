@@ -1,6 +1,6 @@
 # MyFit website
 
-Marketing site for MyFit, an iPhone and Apple Watch workout tracker, published with GitHub Pages at [lukewellander.github.io](https://lukewellander.github.io).
+Marketing site for MyFit, an iPhone and Apple Watch workout tracker, published with GitHub Pages at [getmyfit.app](https://getmyfit.app).
 
 ## Pages
 
@@ -26,4 +26,4 @@ Then visit <http://localhost:8000>.
 
 ## Deploying
 
-The site is served from the `master` branch by GitHub Pages at <https://lukewellander.github.io>. Push changes to deploy.
+The site is served from the `master` branch by GitHub Pages at <https://getmyfit.app>. Push changes to deploy.
