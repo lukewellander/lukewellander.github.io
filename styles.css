@@ -360,7 +360,12 @@ textarea {
   border-radius: 13px;
   background: var(--accent);
   color: #000;
-  cursor: default;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.store-badge:hover {
+  background: #8adcff;
 }
 
 .store-badge svg {
